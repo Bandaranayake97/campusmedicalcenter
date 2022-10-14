@@ -17,11 +17,11 @@ db.connect((error) => {
 
 function addStudent(details) {
   return new Promise(async (resolve, reject) => {
-    let { First_name,Last_name,age,address,email,hostal_or_not,faculty } =
+    let { First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty } =
       details;
-      console.log(First_name);
-let sql = `INSERT INTO student(First_name,Last_name,Age,Address,email,Hostal_or_not,Faculty)
-    VALUES('${First_name}','${Last_name}','${age}',${address},${email},${hostal_or_not},${faculty})`;
+      console.log(Fucalty);
+let sql = `INSERT INTO student(First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty)
+    VALUES('${First_name}','${Last_name}','${Age}','${Addres}','${email}','${Hostel_or_not}','${Fucalty}')`;
               
     db.query(sql, (error, results) => {
       if (error) {
