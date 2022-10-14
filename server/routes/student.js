@@ -21,7 +21,6 @@ router.post("/add", async (req, res) => {
 
   //
   router.get("/get", async (req, res) => {
-    console.log("Today Menu");
     try {
       let data = await dbOperations.student();
       console.log(data.length)
