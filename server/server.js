@@ -18,38 +18,17 @@ saveUninitialized:true
 })))
 
 
-
-// const today_menu = require("./routes/home");
-// const todaymenu = require("./routes/todaymenu");
-// const fooditem = require("./routes/fooditem");
-// const seller = require("./routes/seller");
-// const complaint = require("./routes/complaint");
-// const customer = require("./routes/customer");
-// const admin = require("./routes/admin");
-// const orders = require("./routes/orders");
-
-
 const student = require("./routes/student");
+const doctor = require("./routes/doctor");
+const drug_pricing = require("./routes/drug_pricing");
+//const { drug } = require("./controller/dbOperations");
 
-
-
-// Routes
-
-// app.use("/api/home", today_menu);
-// app.use("/api/seller", seller);
-// app.use("/api/todaymenu", todaymenu);
-// app.use("/api/fooditem",fooditem);
-// app.use("/api/complaint", complaint);
-// app.use("/api/customer", customer);
-// app.use("/api/admin", admin);
-// app.use("/api/orders", orders);
 
 
 app.use("/api/student", student);
+app.use("/api/doctor",doctor);
+app.use("/api/drug_pricing",drug_pricing);
 
-
-
-//app.use("/api/addseller", addseller);
 
 
   
