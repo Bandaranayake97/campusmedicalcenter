@@ -7,7 +7,7 @@ router.post("/add", async (req, res) => {
 
 
     try {
-      let data = await dbOperations.adddocto(details);
+      let data = await dbOperations.adddisease(details);
       if (data) return res.status(200).json({ msg: "Doctor added" });
       res.status(400).json({ error: "FATAL ERROR: complaint not added" });
     } catch (e) {
@@ -18,7 +18,7 @@ router.post("/add", async (req, res) => {
 
   router.get("/get", async (req, res) => {
     try {
-      let data = await dbOperations.getdoctor();
+      let data = await dbOperations.getdisease();
       console.log(data.length)
       res.send(data);
     } catch (e) {
@@ -27,3 +27,4 @@ router.post("/add", async (req, res) => {
   });
 
   module.exports = router;
+

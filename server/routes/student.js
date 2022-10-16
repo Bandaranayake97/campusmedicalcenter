@@ -20,7 +20,7 @@ router.post("/add", async (req, res) => {
   //
   router.get("/get", async (req, res) => {
     try {
-      let data = await dbOperations.student();
+      let data = await dbOperations.getstudent();
       console.log(data.length)
       res.send(data);
     } catch (e) {
