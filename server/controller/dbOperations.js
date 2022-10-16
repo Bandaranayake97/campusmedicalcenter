@@ -101,9 +101,9 @@ let sql = `INSERT INTO privet_preson_history(Allergy_medication,Disease_id)
 
 function addtreatement(details) {
   return new Promise(async (resolve, reject) => {
-    let {Disease_symptoms,First_aid  } = details;
+    let {Disease_symptoms,First_aid} = details;
 
-let sql = `INSERT INTO medical_treatement(Treatement_id,Disease_symptoms,First_aid)
+let sql = `INSERT INTO medical_treatement(Disease_symptoms,First_aid)
     VALUES('${Disease_symptoms}','${First_aid}')`;
               
     db.query(sql, (error, _results) => {

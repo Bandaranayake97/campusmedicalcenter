@@ -18,7 +18,7 @@ router.post("/add", async (req, res) => {
   module.exports = router;
 
   //
-  router.get("/get", async (res) => {
+  router.get("/get", async (req, res) => {
     try {
       let data = await dbOperations.gettreatement();
       console.log(data.length)
