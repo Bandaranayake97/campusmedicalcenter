@@ -101,10 +101,10 @@ let sql = `INSERT INTO privet_preson_history(Allergy_medication,Disease_id)
 
 function addtreatement(details) {
   return new Promise(async (resolve, reject) => {
-    let { Treatement_id,Disease_symptoms,First_aid  } = details;
+    let {Disease_symptoms,First_aid  } = details;
 
-let sql = `INSERT INTO privet_preson_history(Treatement_id,Disease_symptoms,First_aid)
-    VALUES('${Treatement_id}','${Disease_symptoms}','${First_aid}')`;
+let sql = `INSERT INTO medical_treatement(Treatement_id,Disease_symptoms,First_aid)
+    VALUES('${Disease_symptoms}','${First_aid}')`;
               
     db.query(sql, (error, _results) => {
       if (error) {
@@ -119,6 +119,91 @@ let sql = `INSERT INTO privet_preson_history(Treatement_id,Disease_symptoms,Firs
 
   
 }
+
+function adddisease(details) {
+  return new Promise(async (resolve, reject) => {
+    let { number,id } = details;
+
+let sql = `INSERT INTO medical_treatement(number,id)
+    VALUES('${number}','${id}')`;
+              
+    db.query(sql, (error, _results) => {
+      if (error) {
+        console.log(error.message);
+        resolve(false);
+      }
+      resolve(true);
+
+      reject(new Error("from adddruug"));
+    });
+          });
+
+  
+}
+
+function addrecommend(details) {
+  return new Promise(async (resolve, reject) => {
+    let {E_number,	No_of_Patient,date,Recommend,Doctor,disease_id} = details;
+
+let sql = `INSERT INTO doctor_recomend(E_number,No_of_Patient,date,Recommend,Doctor,disease_id)
+    VALUES('${E_number}','${No_of_Patient}',${date}','${Recommend}','${Doctor}','${disease_id}')`;
+              
+    db.query(sql, (error, _results) => {
+      if (error) {
+        console.log(error.message);
+        resolve(false);
+      }
+      resolve(true);
+
+      reject(new Error("from adddruug"));
+    });
+          });
+
+  
+}
+
+function addabout_disease(details) {
+  return new Promise(async (resolve, reject) => {
+    let {R_number,Symptoms,date,Treatement_id,Doctor } = details;
+
+let sql = `INSERT INTO about_the_disease(R_number,Symptoms,date,Treatement_id,Doctor)
+    VALUES('${R_number}','${Symptoms}','${date}','${Treatement_id}','${Doctor}')`;
+              
+    db.query(sql, (error, _results) => {
+      if (error) {
+        console.log(error.message);
+        resolve(false);
+      }
+      resolve(true);
+
+      reject(new Error("from adddruug"));
+    });
+          });
+
+  
+}
+function addrisevetion(details) {
+  return new Promise(async (resolve, reject) => {
+    let {Student_id,Date,Number_of_meet,Doctor } = details;
+
+let sql = `INSERT INTO about_the_disease(Student_id,Date,Number_of_meet,Doctor)
+    VALUES('${Student_id}','${Date}','${Number_of_meet}','${Doctor}')`;
+              
+    db.query(sql, (error, _results) => {
+      if (error) {
+        console.log(error.message);
+        resolve(false);
+      }
+      resolve(true);
+
+      reject(new Error("from adddruug"));
+    });
+          });
+
+  
+}
+
+
 
 
 function getstudent() {
@@ -169,7 +254,65 @@ function gethistory() {
     });
   });
 }
+function gettreatement() {
+  return new Promise((resolve, reject) => {
+    sql = `SELECT * FROM medical_treatement`;
+    db.query(sql, (error, result) => {
+      if (error) console.log(error.message);
+      resolve(result);
+      console.log(result)
+      reject(new Error(" Error "));
+    });
+  });
+}
 
+function getdisease() {
+  return new Promise((resolve, reject) => {
+    sql = `SELECT * FROM enter_disease`;
+    db.query(sql, (error, result) => {
+      if (error) console.log(error.message);
+      resolve(result);
+      console.log(result)
+      reject(new Error(" Error "));
+    });
+  });
+}
+
+function getrecommend() {
+  return new Promise((resolve, reject) => {
+    sql = `SELECT * FROM doctor_recommennd`;
+    db.query(sql, (error, result) => {
+      if (error) console.log(error.message);
+      resolve(result);
+      console.log(result)
+      reject(new Error(" Error"));
+    });
+  });
+}
+
+function getrisevetion() {
+  return new Promise((resolve, reject) => {
+    sql = `SELECT * FROM doctor_risevetion`;
+    db.query(sql, (error, result) => {
+      if (error) console.log(error.message);
+      resolve(result);
+      console.log(result)
+      reject(new Error(" Error"));
+    });
+  });
+}
+
+function getabout_disease() {
+  return new Promise((resolve, reject) => {
+    sql = `SELECT * FROM about_the_disease`;
+    db.query(sql, (error, result) => {
+      if (error) console.log(error.message);
+      resolve(result);
+      console.log(result)
+      reject(new Error(" Error"));
+    });
+  });
+}
 
 
   
@@ -184,8 +327,16 @@ function gethistory() {
     addhistory:addhistory,
     gethistory:gethistory,
     addtreatement:addtreatement,
-    
- 
+    gettreatement:gettreatement,
+    adddisease:adddisease,
+    getdisease:getdisease,
+    addrecommend :addrecommend,
+    getrecommend:getrecommend,
+    getabout_disease:getabout_disease,
+    addabout_disease:addabout_disease,
+    getrisevetion:getrisevetion,
+    addrisevetion:addrisevetion,
+
 
   };
   
