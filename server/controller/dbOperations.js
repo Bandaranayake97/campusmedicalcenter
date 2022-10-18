@@ -17,11 +17,11 @@ db.connect((error) => {
 
 function adddocto(details){
   return new Promise(async (resolve, reject) => {
-    let { First_name,Last_name,Telephone_number,Work_time,Work_hospital,Special,Email } =
+    let { First_name,Last_name,Telephone_number,Work_time,Work_hospital,Special,Email,today_work} =
       details;
       console.log(Fucalty);
-let sql = `INSERT INTO doctor(First_name,Last_name,Telephone_number,Work_time,Work_hospital,Special,Email)
-    VALUES('${First_name}','${Last_name}','${Telephone_number}','${Work_time}','${Work_hospital}','${Special}','${Email}')`;
+let sql = `INSERT INTO doctor(First_name,Last_name,Telephone_number,Work_time,Work_hospital,Special,Email,today_work)
+    VALUES('${First_name}','${Last_name}','${Telephone_number}','${Work_time}','${Work_hospital}','${Special}','${Email}','${today_work}')`;
               
     db.query(sql, (error, _results) => {
       if (error) {
@@ -39,10 +39,11 @@ let sql = `INSERT INTO doctor(First_name,Last_name,Telephone_number,Work_time,Wo
 
 function addStudent(details) {
   return new Promise(async (resolve, reject) => {
-    let { First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty } = details;
+    let {First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty} = details;
       //console.log(Fucalty);
+      console.log(details[0].Age)
 let sql = `INSERT INTO student(First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty)
-    VALUES('${First_name}','${Last_name}','${Age}','${Addres}','${email}','${Hostel_or_not}','${Fucalty}')`;
+    VALUES('${details[0].First_name}','${details[0].Last_name}','${details[0].Age}','${details[0].Addres}','${details[0].email}','${details[0].Hostel_or_not}','${details[0].Fucalty}')`;
               
     db.query(sql, (error, _results) => {
       if (error) {
@@ -184,10 +185,10 @@ let sql = `INSERT INTO about_the_disease(R_number,Symptoms,date,Treatement_id,Do
 }
 function addrisevetion(details) {
   return new Promise(async (resolve, reject) => {
-    let {Student_id,Date,Number_of_meet,Doctor } = details;
+    let {Student_id,Date,Number_of_meet,Time,Doctor } = details;
 
-let sql = `INSERT INTO about_the_disease(Student_id,Date,Number_of_meet,Doctor)
-    VALUES('${Student_id}','${Date}','${Number_of_meet}','${Doctor}')`;
+let sql = `INSERT INTO doctor_risevetion(Student_id,Date,Number_of_meet,Time,Doctor)
+    VALUES('${Student_id}','${Date}','${Number_of_meet}','${Time}','${Doctor}')`;
               
     db.query(sql, (error, _results) => {
       if (error) {
@@ -314,6 +315,71 @@ function getabout_disease() {
   });
 }
 
+function today_patient(date){
+  return new Promise((resolve, reject) => {
+    sql = `SELECT R_number
+           FROM about_the_disease
+           where date = '${date}'`;
+    db.query(sql, (error, result) => {
+      if (error) console.log(error.message);
+      resolve(result);
+      console.log(result)
+      reject(new Error(" Error"));
+    });
+  });
+
+}
+
+function work_doctor(today_work){
+  return new Promise((resolve, reject) => {
+    sql = `SELECT First_name,Last_name,Telephone_number,Work_time
+    from doctor
+    where today_work = '${today_work}';`;
+    db.query(sql, (error, result) => {
+      if (error) console.log(error.message);
+      resolve(result);
+      console.log(result)
+      reject(new Error(" Error"));
+    });
+  });
+
+}
+
+
+function removeDoctor(details) {
+  return new Promise(async (resolve, reject) => {
+let sql = `DELETE FROM doctor WHERE Doctor_id = '${details}'`;
+              
+    db.query(sql, (error, results) => {
+      if (error) {
+        console.log(error.message);
+        resolve(false);
+      }
+      resolve(true);
+      reject(new Error("from addtodaymenu"));
+    });
+  });
+}
+
+function updateDoctor(id,details) {
+  return new Promise(async (resolve, reject) => {
+    console.log(details)
+let sql = `UPDATE doctor
+SET 	Telephone_number = '${details[0].Telephone_number} '
+WHERE Doctor_id = '${id}';`;
+              
+    db.query(sql, (error, results) => {
+      if (error) {
+        console.log(error.message);
+        resolve(false);
+      }
+      resolve(true);
+      reject(new Error("from addtodaymenu"));
+    });
+  });
+}
+
+
 
   
   module.exports = {
@@ -336,7 +402,10 @@ function getabout_disease() {
     addabout_disease:addabout_disease,
     getrisevetion:getrisevetion,
     addrisevetion:addrisevetion,
-
+    today_patient:today_patient,
+    work_doctor:work_doctor,
+    removeDoctor:removeDoctor,
+    updateDoctor:updateDoctor,
 
   };
   

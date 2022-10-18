@@ -27,3 +27,45 @@ router.post("/add", async (req, res) => {
   });
 
   module.exports = router;
+
+  router.get("/doctor/:today_work",async(req,res) =>{
+    let today_work = req.params.today_work;
+    try {
+      let data = await dbOperations.work_doctor(today_work);
+      res.send(data);
+    } catch (e) {
+      res.send(e.message);
+    }
+
+  });
+
+  module.exports = router;
+
+  router.post("/delete/:Doctor_id",async(req,res) =>{
+    let Doctor_id = req.params.Doctor_id;
+    try {
+      console.log(Doctor_id)
+      let data = await dbOperations.removeDoctor(Doctor_id);
+      res.send(data);
+    } catch (e) {
+      res.send(e.message);
+    }
+
+  });
+
+  router.post("/update/:Doctor_id",async(req,res) =>{
+    let Doctor_id = req.params.Doctor_id;
+    let details = req.body;
+    try {
+      console.log(Doctor_id)
+      console.log(details)
+      let data = await dbOperations.updateDoctor(Doctor_id,details);
+      res.send(data);
+    } catch (e) {
+      res.send(e.message);
+    }
+
+  });
+
+  module.exports = router;
+

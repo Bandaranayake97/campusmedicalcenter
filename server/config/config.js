@@ -1,6 +1,6 @@
 module.exports. databaseOptions = {
   host: "localhost",
-  database: "project_database",
+  database: "database_project",
   user: "root",
   password: "",
   
