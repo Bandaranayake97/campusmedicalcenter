@@ -1,5 +1,5 @@
 const express = require("express");
-const dbOperations = require("../controller/dbOperations")
+const dbOperations = require("../controller/DoctorController")
 const router = express.Router();
 
 router.post("/add", async (req, res) => {

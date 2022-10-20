@@ -17,11 +17,10 @@ db.connect((error) => {
 
 function adddocto(details){
   return new Promise(async (resolve, reject) => {
-    let { First_name,Last_name,Telephone_number,Work_time,Work_hospital,Special,Email,today_work} =
-      details;
-      console.log(Fucalty);
-let sql = `INSERT INTO doctor(First_name,Last_name,Telephone_number,Work_time,Work_hospital,Special,Email,today_work)
-    VALUES('${First_name}','${Last_name}','${Telephone_number}','${Work_time}','${Work_hospital}','${Special}','${Email}','${today_work}')`;
+    let { First_name,Last_name,Telephone_number,Work_time,Work_hospital,Special,Email} =details;
+      //console.log(Fucalty);
+let sql = `INSERT INTO doctor(First_name,Last_name,Telephone_number,Work_time,Work_hospital,Special,Email)
+    VALUES('${First_name}','${Last_name}','${Telephone_number}','${Work_time}','${Work_hospital}','${Special}','${Email}')`;
               
     db.query(sql, (error, _results) => {
       if (error) {
@@ -37,27 +36,7 @@ let sql = `INSERT INTO doctor(First_name,Last_name,Telephone_number,Work_time,Wo
   
 }
 
-function addStudent(details) {
-  return new Promise(async (resolve, reject) => {
-    console.log(details.username);
-   let {First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty} = details;
 
-let sql = `INSERT INTO student(First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty)
-    VALUES('${details.username}','${"dddd"}','${55}','${"ddd"}','${"email"}','${"d"}','${"Fucalty"}')`;
-              
-    db.query(sql, (error, _results) => {
-      if (error) {
-        console.log(error.message);
-        resolve(false);
-      }
-      resolve(true);
-
-      reject(new Error("from addstudent"));
-    });
-          });
-
-  
-}
 function adddrug(details) {
   return new Promise(async (resolve, reject) => {
     let { Drugs_name,cost_0PU,ex_date,No_patient  } = details;
@@ -163,26 +142,7 @@ let sql = `INSERT INTO doctor_recomend(E_number,No_of_Patient,date,Recommend,Doc
   
 }
 
-function addabout_disease(details) {
-  return new Promise(async (resolve, reject) => {
-    let {R_number,Symptoms,date,Treatement_id,Doctor } = details;
 
-let sql = `INSERT INTO about_the_disease(R_number,Symptoms,date,Treatement_id,Doctor)
-    VALUES('${R_number}','${Symptoms}','${date}','${Treatement_id}','${Doctor}')`;
-              
-    db.query(sql, (error, _results) => {
-      if (error) {
-        console.log(error.message);
-        resolve(false);
-      }
-      resolve(true);
-
-      reject(new Error("from adddruug"));
-    });
-          });
-
-  
-}
 function addrisevetion(details) {
   return new Promise(async (resolve, reject) => {
     let {Student_id,Date,Number_of_meet,Time,Doctor } = details;
@@ -207,17 +167,7 @@ let sql = `INSERT INTO doctor_risevetion(Student_id,Date,Number_of_meet,Time,Doc
 
 
 
-function getstudent() {
-  return new Promise((resolve, reject) => {
-    sql = `SELECT * FROM student`;
-    db.query(sql, (error, result) => {
-      if (error) console.log(error.message);
-      resolve(result);
-      console.log(result)
-      reject(new Error(" Error"));
-    });
-  });
-}
+
 
 function getdoctor() {
   return new Promise((resolve, reject) => {
@@ -399,8 +349,7 @@ WHERE Doctor_id = '${id}';`;
   
   module.exports = {
    
-    addStudent:addStudent,
-    getstudent:getstudent,
+
     adddocto :adddocto,
     getdoctor : getdoctor,
     adddrug : adddrug,
@@ -414,7 +363,6 @@ WHERE Doctor_id = '${id}';`;
     addrecommend :addrecommend,
     getrecommend:getrecommend,
     getabout_disease:getabout_disease,
-    addabout_disease:addabout_disease,
     getrisevetion:getrisevetion,
     addrisevetion:addrisevetion,
     today_patient:today_patient,

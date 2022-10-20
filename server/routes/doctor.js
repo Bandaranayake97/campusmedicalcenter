@@ -1,5 +1,6 @@
 const express = require("express");
-const dbOperations = require("../controller/dbOperations")
+const DoctorController = require("../controller/DoctorController");
+const dbOperations = require("../controller/DoctorController")
 const router = express.Router();
 
 router.post("/add", async (req, res) => {
@@ -7,8 +8,8 @@ router.post("/add", async (req, res) => {
 
 
     try {
-      let data = await dbOperations.adddocto(details);
-      if (data) return res.status(200).json({ msg: "Doctor added" });
+      let data = await DoctorController.adddocto(details);
+      if (data) return res.status(200).sendFile("C:/Users/chath/Desktop/database project/campusmedicalcenter/server/loginDoctor.html");
       res.status(400).json({ error: "FATAL ERROR: complaint not added" });
     } catch (e) {
       console.log(e.message);
@@ -18,7 +19,7 @@ router.post("/add", async (req, res) => {
 
   router.get("/get", async (req, res) => {
     try {
-      let data = await dbOperations.getdoctor();
+      let data = await DoctorController.getdoctor();
       console.log(data.length)
       res.send(data);
     } catch (e) {
@@ -45,7 +46,7 @@ router.post("/add", async (req, res) => {
     let Doctor_id = req.params.Doctor_id;
     try {
       console.log(Doctor_id)
-      let data = await dbOperations.removeDoctor(Doctor_id);
+      let data = await DoctorController.removeDoctor(Doctor_id);
       res.send(data);
     } catch (e) {
       res.send(e.message);
@@ -59,7 +60,7 @@ router.post("/add", async (req, res) => {
     try {
       console.log(Doctor_id)
       console.log(details)
-      let data = await dbOperations.updateDoctor(Doctor_id,details);
+      let data = await DoctorController.updateDoctor(Doctor_id,details);
       res.send(data);
     } catch (e) {
       res.send(e.message);
