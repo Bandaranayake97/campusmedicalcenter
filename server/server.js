@@ -17,9 +17,9 @@ const app=express();
   saveUninitialized:true
  })));
 //app.use(express.static('public'))
-// app.get('/',(req,res)=>{
-//     res.status(200).send('<h1>hii</h1>')
-// })
+ app.get('/',(req,res)=>{
+  res.sendFile(__dirname + '/index.html');
+ })
 
 
  const student = require("./routes/student");

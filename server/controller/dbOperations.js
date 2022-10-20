@@ -39,6 +39,7 @@ let sql = `INSERT INTO doctor(First_name,Last_name,Telephone_number,Work_time,Wo
 
 function addStudent(details) {
   return new Promise(async (resolve, reject) => {
+    console.log(details);
     let {First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty} = details;
 
 let sql = `INSERT INTO student(First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty)
@@ -228,6 +229,21 @@ function getdoctor() {
       reject(new Error(" Error "));
     });
   });
+}
+
+function getmaindisaese(date){
+  return new Promise((resolve, reject) => {
+    sql = `SELECT R_number
+           FROM about_the_disease
+           where date = '${date}'`;
+    db.query(sql, (error, result) => {
+      if (error) console.log(error.message);
+      resolve(result);
+      console.log(result)
+      reject(new Error(" Error"));
+    });
+  });
+
 }
 
 
