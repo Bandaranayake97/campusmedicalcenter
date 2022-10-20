@@ -1,21 +1,25 @@
 const express=require("express");
 const app=express();
- const session=require("express-session")
- const config=require('./config/config')
+  const session=require("express-session")
+  const config=require('./config/config')
 
- const helmet = require("helmet");
- app.use(helmet());
+  const helmet = require("helmet");
+  app.use(helmet());
 
 
- const cors = require("cors");
- app.use(express.json());
- app.use(cors());
+  const cors = require("cors");
+  app.use(express.json());
+  app.use(cors());
 
- app.use((session({
- secret:"ABCDefg",
- resave:false,
- saveUninitialized:true
-})));
+  app.use((session({
+  secret:"ABCDefg",
+  resave:false,
+  saveUninitialized:true
+ })));
+//app.use(express.static('public'))
+// app.get('/',(req,res)=>{
+//     res.status(200).send('<h1>hii</h1>')
+// })
 
 
  const student = require("./routes/student");
@@ -28,7 +32,6 @@ const app=express();
  const doctor_recomend = require("./routes/doctor_recommend");
  const doctor_risevetion = require("./routes/doctor_risevetion");
 
-  //const { drug } = require("./controller/dbOperations");
 
 
 

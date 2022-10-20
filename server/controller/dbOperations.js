@@ -40,10 +40,9 @@ let sql = `INSERT INTO doctor(First_name,Last_name,Telephone_number,Work_time,Wo
 function addStudent(details) {
   return new Promise(async (resolve, reject) => {
     let {First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty} = details;
-      //console.log(Fucalty);
-      console.log(details[0].Age)
+
 let sql = `INSERT INTO student(First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty)
-    VALUES('${details[0].First_name}','${details[0].Last_name}','${details[0].Age}','${details[0].Addres}','${details[0].email}','${details[0].Hostel_or_not}','${details[0].Fucalty}')`;
+    VALUES('${First_name}','${Last_name}','${Age}','${Addres}','${email}','${Hostel_or_not}','${Fucalty}')`;
               
     db.query(sql, (error, _results) => {
       if (error) {
