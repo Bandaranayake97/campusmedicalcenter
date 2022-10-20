@@ -39,11 +39,11 @@ let sql = `INSERT INTO doctor(First_name,Last_name,Telephone_number,Work_time,Wo
 
 function addStudent(details) {
   return new Promise(async (resolve, reject) => {
-    console.log(details);
-    let {First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty} = details;
+    console.log(details.username);
+   let {First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty} = details;
 
 let sql = `INSERT INTO student(First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty)
-    VALUES('${First_name}','${Last_name}','${Age}','${Addres}','${email}','${Hostel_or_not}','${Fucalty}')`;
+    VALUES('${details.username}','${"dddd"}','${55}','${"ddd"}','${"email"}','${"d"}','${"Fucalty"}')`;
               
     db.query(sql, (error, _results) => {
       if (error) {

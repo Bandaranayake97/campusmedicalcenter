@@ -1,5 +1,5 @@
 const express = require("express");
-const dbOperations = require("../controller/dbOperations")
+const dbOperations = require("../controller/dbOperations");
 const router = express.Router();
 
 
@@ -9,9 +9,10 @@ router.post("/add", async (req, res) => {
 
     try {
       console.log("Function Called");
+      console.log(req)
       let data = await dbOperations.addStudent(details);
       console.log(details)
-      if (data) return res.status(200).json({ msg: "Student added" });
+      if (data) return res.status(200).sendFile("C:/Users/chath/Desktop/database project/campusmedicalcenter/server/index.html");
       res.status(400).json({ error: "FATAL ERROR: complaint not added" });
     } catch (e) {
       console.log(e.message);
@@ -24,9 +25,9 @@ router.post("/add", async (req, res) => {
     try {
       
       let data = await dbOperations.getstudent();
-      console.log(data.length)
-      //res.send(data);
-      res.sendFile(__dirname + '/index.html');
+      console.log(data)
+      res.send(data);
+      
     } catch (e) {
       res.send(e.message);
     }

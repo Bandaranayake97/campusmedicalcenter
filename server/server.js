@@ -2,6 +2,10 @@ const express=require("express");
 const app=express();
   const session=require("express-session")
   const config=require('./config/config')
+  const bodyParser = require('body-parser');
+
+
+  app.use(bodyParser.urlencoded({ extended: true })); 
 
   const helmet = require("helmet");
   app.use(helmet());
@@ -18,10 +22,12 @@ const app=express();
  })));
 //app.use(express.static('public'))
  app.get('/',(req,res)=>{
-  res.sendFile(__dirname + '/index.html');
- })
+ res.sendFile(__dirname + '/index.html');
+ 
+ }) 
 
 
+//
  const student = require("./routes/student");
  const doctor = require("./routes/doctor");
  const drug_pricing = require("./routes/drug_pricing");

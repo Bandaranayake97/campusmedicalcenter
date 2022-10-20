@@ -14,7 +14,7 @@ router.post("/add", async (req, res) => {
       console.log(e.message);
     }
   });
-  module.exports = router;
+
 
   router.get("/get", async (req, res) => {
     try {
@@ -26,7 +26,7 @@ router.post("/add", async (req, res) => {
     }
   });
 
-  module.exports = router;
+
 
   router.get("/doctor/:today_work",async(req,res) =>{
     let today_work = req.params.today_work;
@@ -39,7 +39,7 @@ router.post("/add", async (req, res) => {
 
   });
 
-  module.exports = router;
+  
 
   router.post("/delete/:Doctor_id",async(req,res) =>{
     let Doctor_id = req.params.Doctor_id;
