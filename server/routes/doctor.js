@@ -1,6 +1,6 @@
 const express = require("express");
 const DoctorController = require("../controller/DoctorController");
-const dbOperations = require("../controller/DoctorController")
+
 const router = express.Router();
 
 router.post("/add", async (req, res) => {
@@ -32,7 +32,7 @@ router.post("/add", async (req, res) => {
   router.get("/doctor/:today_work",async(req,res) =>{
     let today_work = req.params.today_work;
     try {
-      let data = await dbOperations.work_doctor(today_work);
+      let data = await DoctorController.work_doctor(today_work);
       res.send(data);
     } catch (e) {
       res.send(e.message);

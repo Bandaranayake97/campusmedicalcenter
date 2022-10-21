@@ -1,5 +1,7 @@
 const express=require("express");
 const app=express();
+const path = require('path');
+
   const session=require("express-session")
   const config=require('./config/config')
   const bodyParser = require('body-parser');
@@ -9,6 +11,7 @@ const app=express();
 
   const helmet = require("helmet");
   app.use(helmet());
+  app.use(express.static(path.join(__dirname, "static")));
 
   app.set('views', 'views')
   app.set('view engine', 'ejs');
@@ -25,12 +28,13 @@ const app=express();
 //app.use(express.static('public'))
  app.get('/',(req,res)=>{
  res.render(__dirname + '/views/index');
+ res.render(__dirname + '/views/student_register.ejs');
+ res.render(__dirname + "/views/updateStudent.ejs");
  })
- app.get('/login',(req,res)=>{
-  res.sendFile(__dirname + '/loginDoctor');
-  
-  })
-  
+
+
+
+
 
 //
  const student = require("./routes/student");

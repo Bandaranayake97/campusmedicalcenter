@@ -1,4 +1,5 @@
 const express = require("express");
+const DoctorController = require("../controller/DoctorController");
 const dbOperations = require("../controller/DoctorController")
 const router = express.Router();
 
@@ -18,7 +19,7 @@ router.post("/add", async (req, res) => {
 
   router.get("/get", async (req, res) => {
     try {
-      let data = await dbOperations.getabout_disease();
+      let data = await DoctorController.getabout_disease();
       console.log(data.length);
       res.send(data);
     } catch (e) {
@@ -31,7 +32,7 @@ router.post("/add", async (req, res) => {
   router.get("/today_patient/:date",async(req,res) =>{
     let date = req.params.date;
     try {
-      let data = await dbOperations.today_patient(date);
+      let data = await DoctorController.today_patient(date);
       res.send(data);
     } catch (e) {
       res.send(e.message);

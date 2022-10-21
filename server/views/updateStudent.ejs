@@ -5,14 +5,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    
 </head>
 <body>
 
+
+    <div class="registation">
+        <div class="main-about">
+            <div class="inner-about">
+                <div class="about-content">
+                
+                    <h1>Registation</h1>
+                 <body>
+                    <div id="container">
+                        <div class="form-wrap">
+                            <p> it is free and only takes a minute</p>
+                            <form action="http://localhost:4000/api/student/add" method="POST">
+                                <div class = "form-control">
+                                    <label for="R_number">Register number</label>
+                                    <input type="int" name="R_number" id = "R_number" value="<student[0].R_number>">
+                                </div>                        
+                                <div class = "form-control">
+                                    <label for="frist-name">Frist Name</label>
+                                    <input type="text" name="First_name" id = "First_name" value="<student[0].First_Name>">
+                                </div>
+                                <div class = "form-control">
+                                    <label for="Last-name">Last Name</label>
+                                    <input type="text" name="Last_name" id = "Last_name" value = "<student[0].Last-name>">
+                                </div>
+                                <div class = "form-group">
+                                    <label for="Age">Age</label>
+                                    <input type="text" name="Age" id = "Age" value="<student[0].Age>"
+                                </div>
+                                <div class = "form-group">
+                                    <label for="Addres">Addres</label>
+                                    <input type="text" name="Addres" id = "Addres" value = "<student[0].Addres>">
+                                </div>
+                                <div class = "form-group">
+                                    <label for="email">email</label>
+                                    <input type="text" name="email" id = "email" value = "<student[0].email>">
+                                </div>
+                                <div class = "form-group">
+                                    <label for="Hostel_or_not">Hostel_or_not</label>
+                                    <input type="text" name="Hostel_or_not" id = "Hostel_or_not" value = "<student[0].Hostel_or_not>">
+                                </div>
+                                <div class = "form-group">
+                                    <label for="Fucalty">Fucalty</label>
+                                    <input type="text" name="Fucalty" id = "Fucalty" value = "<student[0].Fucalty>">
+                                </div>
+                                <button type = "Submit" >Update</button>
+                            </form>
+                       
 <div class = "row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <table class="table table-hover">
+            <form action="http://localhost:4000/api/student/get" method="GET">
 
             <thead>
                 <th>R_number</th>
@@ -51,6 +99,10 @@
             <td><%=data.Hostel_or_not %></td>
             <td><%=data.Fucalty %></td>
             <td><a href="/student/updatestudent/<%=data.R_number%>?edit=true" class="btn">Edit</a></td>
+            <td><form action="/student/" method="POST">
+                <input type="hidden" value="<%= data.R_number %>" name="R_number">
+                <button class="btn" type="submit">Delete</button>
+            </form></td>
         </tr>
         <%  i++; }) %>
         <% } else{ %>

@@ -1,5 +1,5 @@
 const express = require("express");
-//const dbOperations = require("../controller/DoctorController");
+
 const studentController = require("../controller/studentController");
 const router = express.Router();
 
@@ -36,6 +36,31 @@ router.post("/add", async (req, res) => {
     try {
       let data = await studentController.updatestudent(R_number,details);
       if (data) return res.status(200).redirect("/api/student/get")
+    } catch (e) {
+      res.send(e.message);
+    }
+
+  });
+
+  router.get("/update",async(req,res) =>{
+    try{
+      studentController.getstudent().then(data=>{
+        res.render("../views/updateStudent",{pageTitle:'Get Student',path:"/update",userData:data});
+       }).catch(err=>console.log(err));
+    }
+    catch(err){
+      console.log(err);
+    }
+  });
+
+  
+
+  router.post("/delete/:R_number",async(req,res) =>{
+    let R_number = req.params.R_number;
+    try {
+      console.log(R_number)
+      let data = await studentController.removeStudent(R_number);
+      res.send(data);
     } catch (e) {
       res.send(e.message);
     }

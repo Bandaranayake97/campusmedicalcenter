@@ -86,12 +86,26 @@ function addStudent(details) {
       });
     });
   }
+  function removeStudent(details) {
+    return new Promise(async (resolve, reject) => {
+  let sql = `DELETE FROM student WHERE R_number = '${details}'`;
+                
+      db.query(sql, (error, results) => {
+        if (error) {
+          console.log(error.message);
+          resolve(false);
+        }
+        resolve(true);
+        reject(new Error("from addtodaymenu"));
+      });
+    });
+  }
 
   module.exports = {
     getstudent:getstudent,
     addabout_disease: addabout_disease,
     addStudent:addStudent,
     updatestudent:updatestudent,
-
+    removeStudent:removeStudent,
 
   }
