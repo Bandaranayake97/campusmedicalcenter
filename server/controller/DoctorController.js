@@ -181,7 +181,7 @@ function getdoctor() {
   });
 }
 
-function getmaindisaese(date){
+function getmaindisaese(data){
   return new Promise((resolve, reject) => {
     sql = `SELECT R_number
            FROM about_the_disease

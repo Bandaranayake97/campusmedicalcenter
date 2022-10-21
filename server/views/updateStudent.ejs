@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div class = "row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <table class="table table-hover">
+
+            <thead>
+                <th>R_number</th>
+                <th> </th>
+                <th>First_name</th>
+                <th> </th>
+                <th>Last_name</th>
+                <th> </th>
+                <th>Age</th>
+                <th> </th>
+                <th>Addres</th>
+                <th> </th>
+                <th>email</th>
+                <th> </th>
+                <th>Hostel_or_not</th>
+                <th> </th>
+                <th>Fucalty</th>
+
+            </thead>
+<tbody>
+
+      
+    <%
+    if(userData.length!=0){
+        var i=1;
+        userData.forEach(function(data){
+        %>
+        <tr>
+            <td><%=i; %></td>
+            <td><%=data.R_number %></td>
+            <td><%=data.First_name %></td>
+            <td><%=data.Last_name %></td>
+            <td><%=data.Age %></td>
+            <td><%=data.Addres %></td>
+            <td><%=data.Email %></td>
+            <td><%=data.Hostel_or_not %></td>
+            <td><%=data.Fucalty %></td>
+            <td><a href="/student/updatestudent/<%=data.R_number%>?edit=true" class="btn">Edit</a></td>
+        </tr>
+        <%  i++; }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="4">No Data Found</td>
+            </tr>
+        <% } %>
+
+    </tbody>
+    </div>
+
+</div>
+
+
+</body>
+</html>

@@ -69,11 +69,29 @@ function addStudent(details) {
       });
     });
   }
+  function updatestudent(id,details) {
+    return new Promise(async (resolve, reject) => {
+      let {R_number,First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty} = details;
+      console.log(details)
+     let sql = `UPDATE student
+     SET  = R_number='${R_number}', Fist_name = '${First_name}',Last_name='${Last_name}', Age = '${Age}',Addres ='${Addres}',email = '${email}',Hostel_or_not = '${Hostel_or_not}',Fucalty='${fucalty}'
+     WHERE R_number='${id}'`;           
+      db.query(sql, (error, results) => {
+        if (error) {
+          console.log(error.message);
+          resolve(false);
+        }
+        resolve(true);
+        reject(new Error("from addtodaymenu"));
+      });
+    });
+  }
 
   module.exports = {
     getstudent:getstudent,
     addabout_disease: addabout_disease,
     addStudent:addStudent,
+    updatestudent:updatestudent,
 
 
   }

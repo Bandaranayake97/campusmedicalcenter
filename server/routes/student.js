@@ -10,11 +10,8 @@ router.post("/add", async (req, res) => {
 
     try {
       console.log("Function Called");
-      console.log(req)
       let data = await studentController.addStudent(details);
-      console.log(details)
-      if (data) return res.status(200).sendFile("C:/Users/chath/Desktop/database project/campusmedicalcenter/server/loginDoctor.html");
-      res.status(400).json({ error: "FATAL ERROR: complaint not added" });
+      if (data) return res.status(200).redirect("/api/student/get")
     } catch (e) {
       console.log(e.message);
     }
@@ -24,14 +21,25 @@ router.post("/add", async (req, res) => {
   //
   router.get("/get", async (req, res) => {
     try {
-      
-      let data = await studentController.getstudent();
-      console.log(data)
-      res.send(data);
+       studentController.getstudent().then(data=>{
+        res.render("../views/student_register",{pageTitle:'Get Student',path:"/get",userData:data});
+       }).catch(err=>console.log(err));
       
     } catch (e) {
       res.send(e.message);
     }
+  });
+
+  router.post("/update/:R_number",async(req,res) =>{
+    let R_number = req.params.R_number;
+    let details = req.body;
+    try {
+      let data = await studentController.updatestudent(R_number,details);
+      if (data) return res.status(200).redirect("/api/student/get")
+    } catch (e) {
+      res.send(e.message);
+    }
+
   });
 
   module.exports = router;

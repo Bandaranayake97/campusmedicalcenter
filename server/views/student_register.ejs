@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta http-equiv="X-UA _Compatible " content = "IE=edge">
+        <meta name = "viewport" content = "width=device-width,initial-sccale=1.0">
+        <link rel="stylesheet" href="C:\Users\chath\Desktop\database project\campusmedicalcenter\server\views\styles.css">
+        <titel> Registration form Student </titel>
+        </head>
+
+
+        <div class="registation">
+            <div class="main-about">
+                <div class="inner-about">
+                    <div class="about-content">
+                        <h1>Registation</h1>
+                     <body>
+                        <div id="container">
+                            <div class="form-wrap">
+                                <p> it is free and only takes a minute</p>
+                                <form action="http://localhost:4000/api/student/add" method="POST">
+                                    <div class = "form-control">
+                                        <label for="R_number">Register number</label>
+                                        <input type="int" name="R_number" id = "R_number">
+                                    </div>                        
+                                    <div class = "form-control">
+                                        <label for="frist-name">Frist Name</label>
+                                        <input type="text" name="First_name" id = "First_name">
+                                    </div>
+                                    <div class = "form-control">
+                                        <label for="Last-name">Last Name</label>
+                                        <input type="text" name="Last_name" id = "Last_name">
+                                    </div>
+                                    <div class = "form-group">
+                                        <label for="Age">Age</label>
+                                        <input type="text" name="Age" id = "Age">
+                                    </div>
+                                    <div class = "form-group">
+                                        <label for="Addres">Addres</label>
+                                        <input type="text" name="Addres" id = "Addres">
+                                    </div>
+                                    <div class = "form-group">
+                                        <label for="email">email</label>
+                                        <input type="text" name="email" id = "email">
+                                    </div>
+                                    <div class = "form-group">
+                                        <label for="Hostel_or_not">Hostel_or_not</label>
+                                        <input type="text" name="Hostel_or_not" id = "Hostel_or_not">
+                                    </div>
+                                    <div class = "form-group">
+                                        <label for="Fucalty">Fucalty</label>
+                                        <input type="text" name="Fucalty" id = "Fucalty">
+                                    </div>
+                                    <button type = "Submit" >sign up</button>
+                                </form>
+                                <footer> 
+                                    <p>Already Have an Account?<a href="#">Loging Here</a></p>
+                                </footer>
+            
+                        </div>
+                        </body>              
+                    </div>
+                    
+                </div>
+                <div class="inner-about">
+                    <div class="inner-about-image">
+                        <img src="images/chiness.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class = "row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <table class="table table-hover">
+
+                    <thead>
+                        <th>R_number</th>
+                        <th> </th>
+                        <th>First_name</th>
+                        <th> </th>
+                        <th>Last_name</th>
+                        <th> </th>
+                        <th>Age</th>
+                        <th> </th>
+                        <th>Addres</th>
+                        <th> </th>
+                        <th>email</th>
+                        <th> </th>
+                        <th>Hostel_or_not</th>
+                        <th> </th>
+                        <th>Fucalty</th>
+
+                    </thead>
+        <tbody>
+
+              
+            <%
+            if(userData.length!=0){
+                var i=1;
+                userData.forEach(function(data){
+                %>
+                <tr>
+                    <td><%=i; %></td>
+			        <td><%=data.R_number %></td>
+                    <td><%=data.First_name %></td>
+                    <td><%=data.Last_name %></td>
+				    <td><%=data.Age %></td>
+                    <td><%=data.Addres %></td>
+                    <td><%=data.email %></td>
+				    <td><%=data.Hostel_or_not %></td>
+				    <td><%=data.Fucalty %></td>
+
+                </tr>
+                <%  i++; }) %>
+                <% } else{ %>
+                    <tr>
+                        <td colspan="4">No Data Found</td>
+                    </tr>
+                <% } %>
+
+            </tbody>
+            </div>
+
+        </div>

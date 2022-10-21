@@ -10,6 +10,8 @@ const app=express();
   const helmet = require("helmet");
   app.use(helmet());
 
+  app.set('views', 'views')
+  app.set('view engine', 'ejs');
 
   const cors = require("cors");
   app.use(express.json());
@@ -22,13 +24,14 @@ const app=express();
  })));
 //app.use(express.static('public'))
  app.get('/',(req,res)=>{
- res.sendFile(__dirname + '/index.html');
- 
+ res.render(__dirname + '/views/index');
  })
  app.get('/login',(req,res)=>{
   res.sendFile(__dirname + '/loginDoctor');
   
   })
+  
+
 //
  const student = require("./routes/student");
  const doctor = require("./routes/doctor");
