@@ -25,18 +25,15 @@ const path = require('path');
   resave:false,
   saveUninitialized:true
  })));
-//app.use(express.static('public'))
+
+ 
  app.get('/',(req,res)=>{
  res.render(__dirname + '/views/index');
- res.render(__dirname + '/views/student_register.ejs');
- res.render(__dirname + "/views/updateStudent.ejs");
  })
 
 
 
 
-
-//
  const student = require("./routes/student");
  const doctor = require("./routes/doctor");
  const drug_pricing = require("./routes/drug_pricing");
@@ -63,6 +60,6 @@ const path = require('path');
 
   
 app.listen('4000',()=>{
-console.log("server in started on port: 4000");
+console.log("server in started on port: 4001");
 
 });

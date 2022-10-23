@@ -45,8 +45,9 @@ router.post("/add", async (req, res) => {
   router.get("/update",async(req,res) =>{
     try{
       studentController.getstudent().then(data=>{
-        res.render("../views/updateStudent",{pageTitle:'Get Student',path:"/update",userData:data});
+        res.render("../views/updateStudent",{pageTitle:'Get Student',path:"/update",userdata:data});
        }).catch(err=>console.log(err));
+       console.log(data);
     }
     catch(err){
       console.log(err);

@@ -74,7 +74,7 @@ function addStudent(details) {
       let {R_number,First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty} = details;
       console.log(details)
      let sql = `UPDATE student
-     SET  = R_number='${R_number}', Fist_name = '${First_name}',Last_name='${Last_name}', Age = '${Age}',Addres ='${Addres}',email = '${email}',Hostel_or_not = '${Hostel_or_not}',Fucalty='${fucalty}'
+     SET  = R_number='${R_number}', Fist_name = '${First_name}',Last_name='${Last_name}', Age = '${Age}',Addres ='${Addres}',email = '${email}',Hostel_or_not = '${Hostel_or_not}',Fucalty='${Fucalty}'
      WHERE R_number='${id}'`;           
       db.query(sql, (error, results) => {
         if (error) {

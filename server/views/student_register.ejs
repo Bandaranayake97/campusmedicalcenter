@@ -4,9 +4,253 @@
         <meta charset = "UTF-8">
         <meta http-equiv="X-UA _Compatible " content = "IE=edge">
         <meta name = "viewport" content = "width=device-width,initial-sccale=1.0">
-        <link rel="stylesheet" href="C:\Users\chath\Desktop\database_project\campusmedicalcenter\server\views\styles.css">
+        <link rel="stylesheet" href="./styles.css">
         <titel> Registration form Student </titel>
         </head>
+        <style>
+            :root{
+    --mainclr:#239f85;
+    --secclr:#ff5d22;
+    --third:#DFE4E0;
+    --mainafterclr:hsl(167, 81%, 79%);
+}
+*{
+    margin: 50pz;
+    padding: 10pz;
+    outline: none;
+    box-sizing: border-box;
+    transition: .2s;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+html{
+    font-size: 62.5%;
+    
+}
+.header{
+    padding: 1rem 7%;
+    background-color: var(--mainclr);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+.header #logo{
+    width: 50px;
+}
+.navbar a{
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 2rem;
+    position: relative;
+  
+}
+.navbar a:after{
+    content: '';
+    background: var(--secclr);
+    width: 0;
+    height: 3px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    transition: .3s;
+}
+.navbar a:hover:after{
+    content: '';
+    background: var(--secclr);
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+}
+.icons div{
+    font-size: 2rem;
+    margin-right: 1rem;
+    color: white;
+    display: none;
+}
+.icons a{
+    color: white;
+    background: var(--secclr);
+    padding: 1.5rem 3rem;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    transition: .5s;
+}
+.icons a:hover{
+    background: transparent;
+    border: 1px solid var(--secclr);
+}
+.navbar.active{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.background-image{
+    background: url(images/background.jpg);
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 6%;
+    position: relative;
+
+}
+.background-content{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 50%;
+    transform: translate(-80%);
+}
+.background-content h1{
+    color: black;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.background-content p{
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+}
+
+.background-content a{
+    background: var(--secclr);
+    padding: 1.5rem 3rem;
+    border-radius: 15px;
+    color: white;
+    font-size: 1.5rem;
+    transition: .5s;
+}
+.background-content a:hover{
+    background: transparent;
+    border: 1px solid var(--secclr);
+    color: black;
+}
+.about{
+    padding: 6rem 7%;
+    background: var(--third);
+}
+.main-about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.inner-about{
+    flex: 1 1 45rem;
+}
+
+.inner-about .inner-about-image img{
+    width: 100%;
+}
+.about-content{
+    width: 80%;
+}
+.about-content h1{
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+.about-content p{
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+.about-content a{
+    background: var(--secclr);
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    color: white;
+    transition: .5s;
+}
+.about-content a:hover{
+    background: transparent;
+    border: 1px solid var(--secclr);
+    color: black;
+}
+{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+#container{
+    max-width: 430px;
+    margin: 30px auto;
+    padding: 20px
+}
+
+.form-wrap{
+    background: #fff;
+    padding:  25px ;
+    color: #333;
+    border-top: 4px solid #49c1a2;
+    border-radius: 05px;
+}
+.form-wrap  h1,
+.form-wrap p{
+    text-align: center;
+}
+.form-wrap .form-group{
+    margin-top: 15px;
+}
+
+.form-wrap .form-group lable{
+    display: block;
+    color:#666;
+
+}
+.form-wrap .form-group input{
+    width: 100%;
+    padding: 10px;
+    border:  #ddd 1px solid;
+    border-radius: 5px;
+}
+
+.form-wrap button{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #49c1a2;
+    color:#fff;
+    cursor: pointer;
+    border: 10px solid #49c1a2;
+    font-family : 'poppins';
+    font-size: 15px;
+    transition: 1s;
+
+}
+.form-wrap button:hover{
+    background: color #37a083;
+    transition: 1s; 
+}
+        </style>
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="styles.css">
+        </head>
+        <body>
+            <header class="header">
+                <nav class="navbar">
+                    <a href="/index.ejs">home</a>
+                    <a href="/student_register.ejs">register</a>
+                    <a href="/update">main_disease</a>
+                    <a href="#">today wock doctor</a>
+                </nav>
+            
+                <div class="icons">
+                    <div id="menubar" class="fas fa-bars"></div>
+                    <a href="#">0765261206</a>
+                </div>
+            </header>  
+        </body>
 <body>
     
     <header class="header">
@@ -34,15 +278,15 @@
                             <div class="form-wrap">
                                 <p> it is free and only takes a minute</p>
                                 <form action="http://localhost:4000/api/student/add" method="POST">
-                                    <div class = "form-control">
+                                    <div class = "form-group">
                                         <label for="R_number">Register number</label>
                                         <input type="int" name="R_number" id = "R_number">
                                     </div>                        
-                                    <div class = "form-control">
+                                    <div class = "form-group">
                                         <label for="frist-name">Frist Name</label>
                                         <input type="text" name="First_name" id = "First_name">
                                     </div>
-                                    <div class = "form-control">
+                                    <div class = "form-group">
                                         <label for="Last-name">Last Name</label>
                                         <input type="text" name="Last_name" id = "Last_name">
                                     </div>
@@ -129,7 +373,8 @@
 
                 </tr>
                 <%  i++; }) %>
-                <% } else{ %>
+                <% } 
+                else{ %>
                     <tr>
                         <td colspan="4">No Data Found</td>
                     </tr>

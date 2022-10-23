@@ -63,6 +63,7 @@
             <form action="http://localhost:4000/api/student/get" method="GET">
 
             <thead>
+                <th>NUMBER</th>
                 <th>R_number</th>
                 <th> </th>
                 <th>First_name</th>
@@ -84,9 +85,9 @@
 
       
     <%
-    if(userData.length!=0){
+    if(userdata.length!=0){
         var i=1;
-        userData.forEach(function(data){
+        userdata.forEach(function(data){
         %>
         <tr>
             <td><%=i; %></td>
@@ -107,7 +108,7 @@
         <%  i++; }) %>
         <% } else{ %>
             <tr>
-                <td colspan="4">No Data Found</td>
+                <td colspan="3">No Data Found</td>
             </tr>
         <% } %>
 

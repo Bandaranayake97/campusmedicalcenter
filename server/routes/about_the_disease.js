@@ -1,6 +1,6 @@
 const express = require("express");
 const DoctorController = require("../controller/DoctorController");
-const dbOperations = require("../controller/DoctorController")
+
 const router = express.Router();
 
 router.post("/add", async (req, res) => {
@@ -8,7 +8,7 @@ router.post("/add", async (req, res) => {
 
 
     try {
-      let data = await dbOperations.addabout_disease(details);
+      let data = await DoctorController.addabout_disease(details);
       if (data) return res.status(200).json({ msg: "disease added" });
       res.status(400).json({ error: "FATAL ERROR: complaint not added" });
     } catch (e) {
