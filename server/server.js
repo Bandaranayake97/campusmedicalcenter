@@ -28,9 +28,19 @@ const path = require('path');
 
  
  app.get('/',(req,res)=>{
- res.render(__dirname + '/views/index');
+ res.render(__dirname + '/views/index.ejs');
+ 
+ //res.render(__dirname+'/views/');
  })
-
+ app.get('/login',(req,res)=>{
+  res.render(__dirname+'/views/loginPage.ejs');
+ })
+ app.get('/login/student_register',(req,res)=>{
+  res.render(__dirname+'/views/student_register');
+ })
+ app.get('/loginDoctor',(req,res)=>{
+  res.render(__dirname+'/views/loginDoctor');
+ })
 
 
 
@@ -60,6 +70,6 @@ const path = require('path');
 
   
 app.listen('4000',()=>{
-console.log("server in started on port: 4001");
+console.log("server in started on port: 3001");
 
 });

@@ -9,7 +9,7 @@ router.post("/add", async (req, res) => {
     let details = req.body;
 
     try {
-      console.log("Function Called");
+      //console.log("Function Called");
       let data = await studentController.addStudent(details);
       if (data) return res.status(200).redirect("/api/student/get")
     } catch (e) {
