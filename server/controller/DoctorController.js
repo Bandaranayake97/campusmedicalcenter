@@ -15,7 +15,7 @@ db.connect((error) => {
 });
 
 
-function adddocto(details){
+function adddoctor(details){
   return new Promise(async (resolve, reject) => {
     let { First_name,Last_name,Telephone_number,Work_time,Work_hospital,Special,Email} =details;
       //console.log(Fucalty);
@@ -350,7 +350,7 @@ WHERE Doctor_id = '${id}';`;
   module.exports = {
    
 
-    adddocto :adddocto,
+    adddoctor :adddoctor,
     getdoctor : getdoctor,
     adddrug : adddrug,
     getdrug : getdrug,

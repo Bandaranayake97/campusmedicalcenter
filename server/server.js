@@ -33,7 +33,7 @@ const path = require('path');
  //res.render(__dirname+'/views/');
  })
  app.get('/login',(req,res)=>{
-  res.render(__dirname+'/views/loginPage.ejs');
+  res.render(__dirname+'/views/loginPage');
  })
  app.get('/login/student_register',(req,res)=>{
   res.render(__dirname+'/views/student_register');
@@ -41,7 +41,9 @@ const path = require('path');
  app.get('/loginDoctor',(req,res)=>{
   res.render(__dirname+'/views/loginDoctor');
  })
-
+ app.get('/Astudent',(req,res)=>{
+  res.render(__dirname+'/views/student');
+ })
 
 
  const student = require("./routes/student");

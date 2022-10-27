@@ -18,10 +18,10 @@ db.connect((error) => {
 function addStudent(details) {
     return new Promise(async (resolve, reject) => {
       console.log(details);
-     let {R_number,First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty} = details;
+     let {R_number,First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty,pasword} = details;
    //console.log(first_name);
-  let sql = `INSERT INTO student(R_number,First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty)
-      VALUES('${R_number}','${First_name}','${Last_name}','${Age}','${Addres}','${email}','${Hostel_or_not}','${Fucalty}')`;
+  let sql = `INSERT INTO student(R_number,First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty,pasword)
+      VALUES('${R_number}','${First_name}','${Last_name}','${Age}','${Addres}','${email}','${Hostel_or_not}','${Fucalty}','${pasword}')`;
                 
       db.query(sql, (error, _results) => {
         if (error) {
@@ -39,10 +39,10 @@ function addStudent(details) {
 
   function addabout_disease(details) {
     return new Promise(async (resolve, reject) => {
-      let {R_number,Symptoms,date,Treatement_id,Doctor } = details;
+      let {R_number,Disease_id,Symptoms,date,Treatement_id,Doctor } = details;
   
-  let sql = `INSERT INTO about_the_disease(R_number,Symptoms,date,Treatement_id,Doctor)
-      VALUES('${R_number}','${Symptoms}','${date}','${Treatement_id}','${Doctor}')`;
+  let sql = `INSERT INTO about_the_disease(R_number,Disease_id,Symptoms,date,Treatement_id,Doctor)
+      VALUES('${R_number}','${Disease_id}','${Symptoms}','${date}','${Treatement_id}','${Doctor}')`;
                 
       db.query(sql, (error, _results) => {
         if (error) {

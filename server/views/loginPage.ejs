@@ -172,17 +172,17 @@ input[type="submit"]:hover {
   <h2>Login</h2>
   <form id="login-form">
     <p>
-    <input type="text" id="username" name="username" placeholder="Username" required><i class="validation"><span></span><span></span></i>
+    <input type="email" id="email" name="email" placeholder="email" required><i class="validation"><span></span><span></span></i>
     </p>
     <p>
-    <input type="email" id="email" name="email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
+    <input type="text" id="pasword" name="pasword" placeholder="pasword" required><i class="validation"><span></span><span></span></i>
     </p>
     <p>
     <input type="submit" id="login" value="Login">
     </p>
   </form>
   <div id="create-account-wrap">
-    <p>Not a member? <a href="/student_register">Create Student Account</a> <a href="#">Create Doctor Account</a></a><p>
+    <p>Not a member? <a href="/api/student/get">Create Student Account</a> <a href="/api/doctor/add">Create Doctor Account</a></a><p>
   </div><!--create-account-wrap-->
 </div><!--login-form-wrap-->
 <!-- partial -->

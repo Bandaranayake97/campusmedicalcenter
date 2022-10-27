@@ -3,14 +3,17 @@ const DoctorController = require("../controller/DoctorController");
 
 const router = express.Router();
 
+router.get("/add",async(req,res)=>res.render("../views/loginDoctor",{pageTitle:'Get Doctor',path:"/get"}))
+
+
+
 router.post("/add", async (req, res) => {
     let details = req.body;
 
 
     try {
-      let data = await DoctorController.adddocto(details);
-      if (data) return res.status(200).sendFile("C:/Users/chath/Desktop/database project/campusmedicalcenter/server/loginDoctor.html");
-      res.status(400).json({ error: "FATAL ERROR: complaint not added" });
+      let data = await DoctorController.adddoctor(details);
+      if (data) return res.status(200).redirect("/")
     } catch (e) {
       console.log(e.message);
     }
