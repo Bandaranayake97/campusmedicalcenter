@@ -20,7 +20,7 @@
                     <div id="container">
                         <div class="form-wrap">
                             <p> it is free and only takes a minute</p>
-                            <form action="http://localhost:4000/api/student/add" method="POST">
+                            <form action="http://localhost:4000/api/student/get" method="GET">
                                 <div class = "form-control">
                                     <label for="R_number">Register number</label>
                                     <input type="int" name="R_number" id = "R_number" value="<student[0].R_number>">
@@ -53,7 +53,10 @@
                                     <label for="Fucalty">Fucalty</label>
                                     <input type="text" name="Fucalty" id = "Fucalty" value = "<student[0].Fucalty>">
                                 </div>
-                                <button type = "Submit" >Update</button>
+                                <form action="http://localhost:4000/api/student/add" method="POST">
+                                    <button type = "Submit" >Update</button>
+                                </form>
+                               
                             </form>
                        
 <div class = "row">
@@ -65,19 +68,12 @@
             <thead>
                 <th>NUMBER</th>
                 <th>R_number</th>
-                <th> </th>
                 <th>First_name</th>
-                <th> </th>
                 <th>Last_name</th>
-                <th> </th>
                 <th>Age</th>
-                <th> </th>
                 <th>Addres</th>
-                <th> </th>
                 <th>email</th>
-                <th> </th>
                 <th>Hostel_or_not</th>
-                <th> </th>
                 <th>Fucalty</th>
 
             </thead>

@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fontawesome-free-5.15.3-web/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
 </head>
 <style>
     :root{
@@ -14,8 +19,8 @@
     --mainafterclr:hsl(167, 81%, 79%);
 }
 *{
-    margin: 50pz;
-    padding: 10pz;
+    margin: 0;
+    padding: 0;
     outline: none;
     box-sizing: border-box;
     transition: .2s;
@@ -129,23 +134,510 @@ html{
     border: 1px solid var(--secclr);
     color: black;
 }
-</style>
+.about{
+    padding: 6rem 7%;
+    background: var(--third);
+}
+.main-about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.inner-about{
+    flex: 1 1 45rem;
+}
 
-    <body>
-        <header class="header">
-            <nav class="navbar">
-                <a href="/">home</a>
-                <a href="/login">login</a>
-                <a href="/api/student/get">Register</a>
-                <a href="#">today wock doctor</a>
-            </nav>
+.inner-about .inner-about-image img{
+    width: 100%;
+}
+.about-content{
+    width: 80%;
+}
+.about-content h1{
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+.about-content p{
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+.about-content a{
+    background: var(--secclr);
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    color: white;
+    transition: .5s;
+}
+.about-content a:hover{
+    background: transparent;
+    border: 1px solid var(--secclr);
+    color: black;
+}
+.our-services{
+    padding: 4rem 7%;
+}
+.service-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+.left-service-content{
+    flex: 1 1 45rem;
+}
+.right-service-content{
+    flex: 1 1 45rem;
+    display: flex;
+    justify-content: flex-end;
+
+}
+.left-service-content h1{
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+.left-service-content p{
+    font-size: 1.5rem;
+}
+.right-service-content .right-btn a{
+    padding: 1.5rem 3rem;
+    font-size: 2rem;
+    color: white;
+    background: var(--secclr);
+}
+.right-service-content .right-btn a:hover{
+    border: 1px solid var(--secclr);
+    background: transparent;
+    color: black;
+}
+.main-services{
+    padding-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.inner-services-content{
+    flex: 1 1 300px;
+    padding: 1rem 3rem;
+    text-align: center;
+}
+.inner-services-content h2{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.inner-services-content p{
+    font-size: 1.5rem;
+    line-height: 2;
+}
+.service-icon i{
+    font-size: 4rem;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 8rem;
+    background: var(--mainafterclr);
+    color: var(--mainclr);
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: .3s;
+}
+.service-icon i:hover{
+    color: white;
+    background: var(--mainclr);
+}
+.gallery{
+    padding: 4rem 7%;
+}
+.gallery h1{
+    color: var(--mainclr);
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.main-gallery{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.inner-gallery{
+    flex:1 1 300px;
+
+}
+.inner-gallery img{
+    width: 100%;
+    transition: .3s;
+}
+.inner-gallery img:hover{
+    transform: scale(1.1);
+    border-radius: 20px;
+}
+.our-doctors{
+    padding: 4rem 7%;
+}
+.our-doctors h1{
+    text-align: center;
+    font-size: 40px;
+    color: var(--mainclr);
+    margin-bottom: 30px;
+}
+.main-doctor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.inner-doctor{
+    flex: 1 1 300px;
+    position: relative;
+}
+.inner-doctor img{
+    width: 100%;
+
+}
+.doc-icons{
+    position: absolute;
+    bottom: 2%;
+}
+.doc-icons div{
+    font-size: 2rem;
+    color: var(--mainclr);
+    background: white;
+    border: 1px solid black;
+    margin-left: 2rem;
+    width: 4rem;
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+    cursor: pointer;
+}
+.doc-icons div:hover{
+    transform: scale(1.1);
+}
+.why-choseus{
+    padding: 4rem 7%;
+}
+.main-chose{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+.inner-chose{
+    flex: 1 1 45rem;
+}
+.inner-chose img{
+    width: 100%;
+}
+.inner-chose h1{
+    font-size: 40px;
+    color: var(--mainclr);
+    margin-bottom: 20px;
+}
+.main-inner-chose{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+    
+}
+.chose-icon i{
+    width: 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    background: white;
+    color: var(--mainclr);
+    font-size: 3rem;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.icon-content{
+    padding: 0 4rem;
+}
+.icon-content p{
+    font-size: 1.5rem;
+    line-height: 1;
+}
+.footer{
+    padding: 6rem 7%;
+    background: var(--third);
+}
+.main-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.inner-footer{
+    flex: 1 1 200px;
+}
+.inner-footer h2{
+    font-size: 2rem;
+    color: black;
+}
+.inner-footer a{
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: black;
+    display: block;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+.inner-footer a:hover{
+    margin-left: 10px;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--mainclr); 
+    background: var(--mainclr);
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--secclr); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--third); 
+  }
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:767px) {
+
+    html{
+        font-size: 55%;
+    }
+    .header{
+        padding: 2rem;
+    }
+    .icons div{
+        display: initial;
+    }
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--secclr);
+        display: flex;
         
-            <div class="icons">
-                <div id="menubar" class="fas fa-bars"></div>
-                <a href="#">0765261206</a>
-            </div>
-        </header>  
-    </body>
+        align-items: center;
+        flex-direction: column;
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
 
+    
+    .navbar a{
+        display: block;
+        font-size: 3rem;
+        font-weight: bolder;
+        margin: 1rem;
+        padding: 1rem;
+        color: black;
+    }
+    .background-content{
+        
+        width: 100%;
+       left: 50%;
+       top: 50%;
+       transform: translate(-50%, -50%);
+       padding-left: 5rem;
+    }
+    .inner-about .inner-about-image img{
+        margin-top: 20px;
+    }
+
+    .right-service-content{
+       
+        justify-content: flex-start;
+    
+    }
+
+
+
+
+}
+</style>
+<body>
+    
+    <header class="header">
+        <img src="/views/logo.png" id="logo" alt="">
+
+        <nav class="navbar">
+            <a href="/">home</a>
+            <a href="/login">login</a>
+            <a href="/api/student/get">About us</a>
+            <a href="api/student/update">update</a>
+        </nav>
+
+        <div class="icons">
+            <div id="menubar" class="fas fa-bars"></div>
+            <a href="#">contact</a>
+        </div>
+    </header>
+
+    <div class="background-image">
+        <div class="background-content">
+            <h1>WELL COOME ! <br> Nothing is more important than your health</h1>
+            <p> Student life professionals,campus recreation fitness staff, and faculty <br> members... need to educate the campus on the important role <br> of physical activity and health in facilitation students' capacity to learn. <br> the implication is that if health is enhanced <br> learning capacity expands... </p>
+            <a href="#">Read more</a>
+        </div>
+    </div>
+
+    <div class="about">
+        <div class="main-about">
+            <div class="inner-about">
+                <div class="about-content">
+                    <h1>about us</h1>
+                <p>We want to provide the best medical care for our university students . <br> Our medical center is assisted by many doctors and many facilities. <br>we work in everyday and you can contact us using this website and contact number. <br>The condition of your illness will be checked and the necessary treatment will be provided and if further treatment is required, transportation facilities will be provided for it as well as dealing with your illness together with another grant hospital. </p>
+                <a href="#">Read more</a>
+                </div>
+                
+            </div>
+            <div class="inner-about">
+                <div class="inner-about-image">
+                    <img src="images/chiness.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="our-services">
+        <div class="service-content">
+            <div class="left-service-content">
+                <h1>Our special services</h1>
+                <p>find the main desease of theis time period and inform how protect to that desease</p>
+            </div>
+        </div>
+
+        <div class="main-services">
+            <div class="inner-services-content">
+                <div class="service-icon">
+                    <i class="fas fa-notes-medical"></i>
+                </div>
+                <h2>health care</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum corporis impedit nam quaerat vitae incidunt aspernatur, conseq</p>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="gallery">
+        <h1>Gallery</h1>
+        <div class="main-gallery">
+            <div class="inner-gallery">
+                <img src="images/gal1.jpg" alt="">
+            </div>
+
+            <div class="inner-gallery">
+                <img src="images/gal2.jpg" alt="">
+            </div>
+
+            <div class="inner-gallery">
+                <img src="images/gal3.jpg" alt="">
+            </div>
+
+            <div class="inner-gallery">
+                <img src="images/gal4.jpg" alt="">
+            </div>
+
+            <div class="inner-gallery">
+                <img src="images/gal5.jpg" alt="">
+            </div>
+
+            <div class="inner-gallery">
+                <img src="images/gal6.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    
+<div class="our-doctors">
+    <h1>Our special doctors</h1>
+
+    <div class="main-doctor">
+        <div class="inner-doctor">
+            <img src="images/gal3.jpg" alt="">
+            <div class="doc-icons">
+                <div class="fab fa-facebook"></div>
+                <div class="fab fa-twitter"></div>
+                <div class="fab fa-instagram"></div>
+                <div class="fab fa-linkedin"></div>
+            </div>
+        </div>
+
+        <div class="inner-doctor">
+            <img src="images/gal2.jpg" alt="">
+            <div class="doc-icons">
+                <div class="fab fa-facebook"></div>
+                <div class="fab fa-twitter"></div>
+                <div class="fab fa-instagram"></div>
+                <div class="fab fa-linkedin"></div>
+            </div>
+        </div>
+
+        <div class="inner-doctor">
+            <img src="images/gal5.jpg" alt="">
+            <div class="doc-icons">
+                <div class="fab fa-facebook"></div>
+                <div class="fab fa-twitter"></div>
+                <div class="fab fa-instagram"></div>
+                <div class="fab fa-linkedin"></div>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+
+<div class="footer">
+    <div class="main-footer">
+        <div class="inner-footer">
+            <img src="images/logo.png" alt="">
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+
+<!-- provide an exceptional patient experience
+<i class="fas fa-notes-medical"></i>
+<i class="fas fa-hospital-user"></i>
+<i class="fas fa-user-md"></i>
+-->

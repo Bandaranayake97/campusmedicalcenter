@@ -27,4 +27,15 @@ router.post("/add", async (req, res) => {
     }
   });
 
+  router.get("/preson_history/get", async (req, res) => {
+    try {
+       studentController.getstudent().then(data=>{
+        res.render("../views/student",{pageTitle:'About Student',path:"/preson_history/get"});
+       }).catch(err=>console.log(err));
+      
+    } catch (e) {
+      res.send(e.message);
+    }
+  });
+
   module.exports = router;

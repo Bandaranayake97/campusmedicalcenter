@@ -44,6 +44,7 @@ const path = require('path');
  app.get('/Astudent',(req,res)=>{
   res.render(__dirname+'/views/student');
  })
+ 
 
 
  const student = require("./routes/student");

@@ -30,22 +30,25 @@ router.post("/add", async (req, res) => {
     }
   });
 
-  router.post("/update/:R_number",async(req,res) =>{
+
+
+  router.post("updatestudent/:R_number?edit=true",async(req,res) =>{
     let R_number = req.params.R_number;
     let details = req.body;
     try {
-      let data = await studentController.updatestudent(R_number,details);
+       studentController.updatestudent(R_number,details).then(data=>{res.render("../views/updateStudent",{pageTitle:'Get Student',path:"updatestudent/:R_number?edit=true",userdata:data});
       if (data) return res.status(200).redirect("/api/student/get")
-    } catch (e) {
-      res.send(e.message);
-    }
+    }).catch (e=> console.log(err));
+  }catch(err){
+    console.log(err);
+  }
 
   });
 
   router.get("/update",async(req,res) =>{
     try{
       studentController.getstudent().then(data=>{
-        res.render("../views/updateStudent",{pageTitle:'Get Student',path:"/update",userdata:data});
+        res.render("../views/updateStudent",{pageTitle:'Get Student',path:"/update/R_number",userdata:data});
        }).catch(err=>console.log(err));
        console.log(data);
     }
