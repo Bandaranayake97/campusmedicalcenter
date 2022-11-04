@@ -7,6 +7,171 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
 </head>
+<style>
+    :root{
+--mainclr:#239f84;
+--secclr:#22b9ff;
+--third:#DFE4E0;
+--mainafterclr:hsl(167, 81%, 79%);
+}
+*{
+margin: 50pz;
+padding: 10pz;
+outline: none;
+box-sizing: border-box;
+transition: .2s;
+text-transform: capitalize;
+text-decoration: none;
+}
+html{
+font-size: 62.5%;
+
+}
+.header{
+padding: 1rem 7%;
+background-color: var(--mainclr);
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: fixed;
+left: 0;
+right: 0;
+z-index: 1000;
+}
+.header #logo{
+width: 50px;
+}
+
+.background-content{
+position: absolute;
+top: 30%;
+left: 50%;
+width: 50%;
+transform: translate(-80%);
+}
+.background-content h1{
+color: black;
+font-size: 40px;
+margin-bottom: 20px;
+}
+.background-content p{
+font-size: 1.5rem;
+margin-bottom: 40px;
+}
+
+.background-content a{
+background: var(--secclr);
+padding: 1.5rem 3rem;
+border-radius: 15px;
+color: white;
+font-size: 1.5rem;
+transition: .5s;
+}
+.background-content a:hover{
+background: transparent;
+border: 1px solid var(--secclr);
+color: black;
+}
+.about{
+padding: 6rem 7%;
+background: var(--third);
+}
+.main-about{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 15px;
+flex-wrap: wrap;
+}
+.inner-about{
+flex: 1 1 45rem;
+}
+
+.inner-about .inner-about-image img{
+width: 100%;
+}
+.about-content{
+width: 80%;
+}
+.about-content h1{
+font-size: 40px;
+margin-bottom: 15px;
+}
+.about-content p{
+font-size: 1.5rem;
+margin-bottom: 30px;
+}
+.about-content a{
+background: var(--secclr);
+padding: 1rem 3rem;
+font-size: 1.5rem;
+color: white;
+transition: .5s;
+}
+.about-content a:hover{
+background: transparent;
+border: 1px solid var(--secclr);
+color: black;
+}*
+{
+margin: 0;
+padding:0;
+box-sizing: border-box;
+}
+
+#container{
+max-width: 430px;
+margin: 30px auto;
+padding: 20px
+}
+
+.form-wrap{
+background: #fff;
+padding:  25px ;
+color: #333;
+border-top: 4px solid #49c1a2;
+border-radius: 05px;
+}
+.form-wrap  h1,
+.form-wrap p{
+text-align: center;
+}
+.form-wrap .form-group{
+margin-top: 15px;
+}
+
+.form-wrap .form-group lable{
+display: block;
+color:#666;
+
+}
+.form-wrap .form-group input{
+width: 100%;
+padding: 10px;
+border:  #ddd 1px solid;
+border-radius: 5px;
+}
+
+.form-wrap button{
+display: block;
+width: 100%;
+padding: 10px;
+margin-top: 20px;
+background-color: #64ccb2;
+color:#fff;
+cursor: pointer;
+border: 10px solid #49c1a2;
+font-family : 'poppins';
+font-size: 15px;
+transition: 1s;
+
+}
+.form-wrap button:hover{
+background: color #5fbfa7;
+transition: 1s; 
+}
+
+</style>
 <body>
 
 
@@ -15,56 +180,77 @@
             <div class="inner-about">
                 <div class="about-content">
                 
-                    <h1>Registation</h1>
+                    <h1>Update Student</h1>
                  <body>
                     <div id="container">
                         <div class="form-wrap">
-                            <p> it is free and only takes a minute</p>
-                            <form action="http://localhost:4000/api/student/get" method="GET">
-                                <div class = "form-control">
+                         <form action="http://localhost:4000/api/student/updatestudent/:R_number/add" method="post">
+                               
+                                <div class = "form-gruoup">
                                     <label for="R_number">Register number</label>
-                                    <input type="int" name="R_number" id = "R_number" value="<student[0].R_number>">
+                                    <input type="int" name="R_number" id = "R_number" value=<%=student[0].R_number%>>
                                 </div>                        
-                                <div class = "form-control">
+                                <div class = "form-group">
                                     <label for="frist-name">Frist Name</label>
-                                    <input type="text" name="First_name" id = "First_name" value="<student[0].First_Name>">
+                                    <input type="text" name="First_name" id = "First_name" value=<%=student[0].First_name%>>
                                 </div>
-                                <div class = "form-control">
+                                <div class = "form-group">
                                     <label for="Last-name">Last Name</label>
-                                    <input type="text" name="Last_name" id = "Last_name" value = "<student[0].Last-name>">
+                                    <input type="text" name="Last_name" id = "Last_name" value = <%=student[0].Last_name%>>
                                 </div>
                                 <div class = "form-group">
                                     <label for="Age">Age</label>
-                                    <input type="text" name="Age" id = "Age" value="<student[0].Age>"
+                                    <input type="text" name="Age" id = "Age" value=<%=student[0].Age%>>
                                 </div>
                                 <div class = "form-group">
                                     <label for="Addres">Addres</label>
-                                    <input type="text" name="Addres" id = "Addres" value = "<student[0].Addres>">
+                                    <input type="text" name="Addres" id = "Addres" value = <%=student[0].Addres%>>
                                 </div>
                                 <div class = "form-group">
                                     <label for="email">email</label>
-                                    <input type="text" name="email" id = "email" value = "<student[0].email>">
+                                    <input type="text" name="email" id = "email" value = <%=student[0].email%>>
                                 </div>
                                 <div class = "form-group">
                                     <label for="Hostel_or_not">Hostel_or_not</label>
-                                    <input type="text" name="Hostel_or_not" id = "Hostel_or_not" value = "<student[0].Hostel_or_not>">
+                                    <input type="text" name="Hostel_or_not" id = "Hostel_or_not" value = <%=student[0].Hostel_or_not%>>
                                 </div>
                                 <div class = "form-group">
                                     <label for="Fucalty">Fucalty</label>
-                                    <input type="text" name="Fucalty" id = "Fucalty" value = "<student[0].Fucalty>">
+                                    <input type="text" name="Fucalty" id = "Fucalty" value = <%=student[0].Fucalty%>>
                                 </div>
-                                <form action="http://localhost:4000/api/student/add" method="POST">
+                                
                                     <button type = "Submit" >Update</button>
-                                </form>
+                               
                                
                             </form>
                        
-<div class = "row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <table class="table table-hover">
-            <form action="http://localhost:4000/api/student/get" method="GET">
 
+                            <style>
+                                table {
+                                  font-family: arial, sans-serif;
+                                  border-collapse: collapse;
+                                  width: 100%;
+                                }
+                    
+                                td{
+                                    background: color #37a083;
+                                    border: 1px solid #f3eeee;
+                                  text-align: left;
+                                  padding: 8px;
+                                }
+                                
+                                th {
+                                  border: 1px solid #131414;
+                                  text-align: left;
+                                  padding: 8px;
+                                  background-color: #54b7e9;
+                    
+                                }
+                                tr:nth-child(even) {
+                                  background-color: #e7e2e2;
+                                }
+                                </style>
+        <table>
             <thead>
                 <th>NUMBER</th>
                 <th>R_number</th>
@@ -95,11 +281,8 @@
             <td><%=data.Email %></td>
             <td><%=data.Hostel_or_not %></td>
             <td><%=data.Fucalty %></td>
-            <td><a href="/student/updatestudent/<%=data.R_number%>?edit=true" class="btn">Edit</a></td>
-            <td><form action="/student/" method="POST">
-                <input type="hidden" value="<%= data.R_number %>" name="R_number">
-                <button class="btn" type="submit">Delete</button>
-            </form></td>
+            <td><a href="../student/getupdateStudent/:<%=data.R_number%>" class="btn">Edit</a></td>
+            <td><a href="../student/delete/:<%=data.R_number%>"class="btn">Delete</a></td>
         </tr>
         <%  i++; }) %>
         <% } else{ %>
@@ -109,9 +292,8 @@
         <% } %>
 
     </tbody>
-    </div>
+</table>
 
-</div>
 
 
 </body>

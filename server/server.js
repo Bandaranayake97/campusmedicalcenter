@@ -28,7 +28,13 @@ const path = require('path');
 
  
  app.get('/',(req,res)=>{
- res.render(__dirname + '/views/index.ejs');
+  data=[{
+    Treatement_id : " ",
+    Disease_symptoms : " ",
+    First_aid : " ",
+
+  }];
+ res.render(__dirname + '/views/index.ejs',{userData:data});
  
  //res.render(__dirname+'/views/');
  })

@@ -10,10 +10,11 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
+    
 </head>
 <style>
     :root{
-    --mainclr:#239f85;
+    --mainclr:#68847e;
     --secclr:#ff5d22;
     --third:#DFE4E0;
     --mainafterclr:hsl(167, 81%, 79%);
@@ -159,6 +160,10 @@ html{
     font-size: 40px;
     margin-bottom: 15px;
 }
+.about-content h2{
+    font-size: 30px;
+    margin-bottom: 15px;
+}
 .about-content p{
     font-size: 1.5rem;
     margin-bottom: 30px;
@@ -249,34 +254,6 @@ html{
 .service-icon i:hover{
     color: white;
     background: var(--mainclr);
-}
-.gallery{
-    padding: 4rem 7%;
-}
-.gallery h1{
-    color: var(--mainclr);
-    font-size: 40px;
-    text-align: center;
-    margin-bottom: 30px;
-}
-.main-gallery{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-.inner-gallery{
-    flex:1 1 300px;
-
-}
-.inner-gallery img{
-    width: 100%;
-    transition: .3s;
-}
-.inner-gallery img:hover{
-    transform: scale(1.1);
-    border-radius: 20px;
 }
 .our-doctors{
     padding: 4rem 7%;
@@ -506,7 +483,8 @@ html{
 
     <div class="background-image">
         <div class="background-content">
-            <h1>WELL COOME ! <br> Nothing is more important than your health</h1>
+            <h1>CAMPUS MEDICUL CENTER</h1>
+            <h2>WELL COOME ! <br> Nothing is more important than your health</h2>
             <p> Student life professionals,campus recreation fitness staff, and faculty <br> members... need to educate the campus on the important role <br> of physical activity and health in facilitation students' capacity to learn. <br> the implication is that if health is enhanced <br> learning capacity expands... </p>
             <a href="#">Read more</a>
         </div>
@@ -537,21 +515,84 @@ html{
                 <p>find the main desease of theis time period and inform how protect to that desease</p>
             </div>
         </div>
+        <div class="about-content">
 
-        <div class="main-services">
-            <div class="inner-services-content">
-                <div class="service-icon">
-                    <i class="fas fa-notes-medical"></i>
-                </div>
-                <h2>health care</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum corporis impedit nam quaerat vitae incidunt aspernatur, conseq</p>
+            <body>
+               <div id="container">
+                   <div class="form-wrap">
+                       <p> Registration form Student</p>
+                       <form action="/api/doctor/mainDisease/add" method="POST">
+                           <div class = "form-group">
+                               <label for="date1">date1</label>
+                               <input type="date" name="date1" id = "date1"  >
+                           </div>                        
+                           <div class = "form-group">
+                               <label for="date2">date2</label>
+                               <input type="date" name="date2" id = "date2" >
+                           </div>
+                           <button type = "Submit" >submit</button>
+                       </form>
+   
+               </div>
+               </body>
+        <style>
+            table {
 
-            </div>
-        </div>
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+
+            }
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+
+
+
+                <table>
+
+                    <thead>
+                        <th>Treatment id number</th>
+                        <th>Disease symptoms</th>
+                        <th>Firs aid</th>
+
+                    </thead>
+        <tbody>
+
+              
+            <%
+            if(userData.length!=0){
+                var i=1;
+                userData.forEach(function(data){
+                %>
+                <tr>
+                    <td><%=i; %></td>
+			        <td><%=data.Treatment_id %></td>
+                    <td><%=data.Disease_symptom %></td>
+                    <td><%=data.First_aid%></td>
+                </tr>
+                <%  i++; }) %>
+                <% } 
+                else{ %>
+                    <tr>
+                        <td colspan="4">No Data Found</td>
+                    </tr>
+                <% } %>
+                
+
+            </tbody>
+        </table>
     </div>
 
 
-    <div class="gallery">
+ <!--<div class="gallery"> 
         <h1>Gallery</h1>
         <div class="main-gallery">
             <div class="inner-gallery">
@@ -578,12 +619,12 @@ html{
                 <img src="images/gal6.jpg" alt="">
             </div>
         </div>
-    </div>
+    </div>-->
     
-<div class="our-doctors">
-    <h1>Our special doctors</h1>
+<div class="main disease">
+    <h1>Main disease</h1>
 
-    <div class="main-doctor">
+   <!-- <div class="main-doctor">
         <div class="inner-doctor">
             <img src="images/gal3.jpg" alt="">
             <div class="doc-icons">
@@ -615,7 +656,7 @@ html{
         </div>
 
         
-    </div>
+    </div>-->
 </div>
 
 

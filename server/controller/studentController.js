@@ -69,12 +69,28 @@ function addStudent(details) {
       });
     });
   }
+
+  function getoneStudent(id){
+    return new Promise((resolve, reject) => {
+      sql = `SELECT  R_number, First_name , Last_name , Age , Addres , email , Hostel_or_not , Fucalty
+            FROM student
+      WHERE R_number="${id}"`;
+      db.query(sql, (error, result) => {
+        if (error) console.log(error.message);
+        resolve(result);
+        console.log(result)
+        reject(new Error(" Error"));
+      });
+    });
+
+  }
+
   function updatestudent(id,details) {
     return new Promise(async (resolve, reject) => {
       let {R_number,First_name,Last_name,Age,Addres,email,Hostel_or_not,Fucalty} = details;
       console.log(details)
      let sql = `UPDATE student
-     SET  = R_number='${R_number}', Fist_name = '${First_name}',Last_name='${Last_name}', Age = '${Age}',Addres ='${Addres}',email = '${email}',Hostel_or_not = '${Hostel_or_not}',Fucalty='${Fucalty}'
+     SET   R_number='${R_number}', First_name = '${First_name}',Last_name='${Last_name}', Age = '${Age}',Addres ='${Addres}',email = '${email}',Hostel_or_not = '${Hostel_or_not}',Fucalty='${Fucalty}'
      WHERE R_number='${id}'`;           
       db.query(sql, (error, results) => {
         if (error) {
@@ -86,9 +102,9 @@ function addStudent(details) {
       });
     });
   }
-  function removeStudent(details) {
+  function removeStudent(R_number) {
     return new Promise(async (resolve, reject) => {
-  let sql = `DELETE FROM student WHERE R_number = '${details}'`;
+  let sql = `DELETE FROM student WHERE R_number = '${R_number}'`;
                 
       db.query(sql, (error, results) => {
         if (error) {
@@ -107,5 +123,6 @@ function addStudent(details) {
     addStudent:addStudent,
     updatestudent:updatestudent,
     removeStudent:removeStudent,
+    getoneStudent:getoneStudent,
 
   }

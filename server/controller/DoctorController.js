@@ -181,11 +181,13 @@ function getdoctor() {
   });
 }
 
-function getmaindisaese(data){
+function getmaindisaese(date1,date2){
   return new Promise((resolve, reject) => {
-    sql = `SELECT R_number
-           FROM about_the_disease
-           where date = '${date}'`;
+    sql = `SELECT ab.Treatement_id,md.Disease_symptoms,md.First_aid
+          FROM about_the_disease as ab
+          INNER JOIN  medical_treatement as md
+          ON ab.Treatement_id = md.Treatement_id
+          WHERE ab.date between "${date1}" and "${date2}"`;
     db.query(sql, (error, result) => {
       if (error) console.log(error.message);
       resolve(result);
@@ -193,7 +195,7 @@ function getmaindisaese(data){
       reject(new Error(" Error"));
     });
   });
-
+  
 }
 
 
@@ -369,6 +371,7 @@ WHERE Doctor_id = '${id}';`;
     work_doctor:work_doctor,
     removeDoctor:removeDoctor,
     updateDoctor:updateDoctor,
+    getmaindisaese:getmaindisaese
 
   };
   
