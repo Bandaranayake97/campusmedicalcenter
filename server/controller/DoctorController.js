@@ -197,6 +197,37 @@ function getmaindisaese(date1,date2){
   });
   
 }
+function gettodaywork(date1){
+console.log("...................");
+console.log(date1);
+  return new Promise((resolve, reject) => {
+   let sql = `select ad.R_number,st.First_name,st.Age,st.Hostel_or_not,st.Fucalty,ad.Treatement_id,mt.Disease_symptoms,ph.Allergy_medication
+from about_the_disease as ad
+inner join medical_treatement as mt
+on ad.Treatement_id = mt.Treatement_id
+inner join doctor as d
+on ad.Doctor = d.Doctor_id
+inner join doctor_recommend as dr
+on d.Doctor_id =  dr.Doctor
+inner join privet_preson_history as ph
+on dr.disease_id = ph.Disease_id
+inner join enter_disease as ed
+on ed.id = ad.Disease_id
+inner join student as st
+on st.R_number = ed.number
+where ad.date = '${date1}' `;
+console.log("..................................................")
+console.log(sql);
+
+     db.query(sql, (error, result) => {
+      if (error) console.log(error.message);
+      resolve(result);
+      console.log(result)
+      reject(new Error(" Error"));
+    });
+  });
+  
+}
 
 
 function getdrug() {
@@ -222,9 +253,12 @@ function gethistory() {
     });
   });
 }
-function gettreatement() {
+function gettreatement(tretment) {
+  console.log(tretment);
   return new Promise((resolve, reject) => {
-    sql = `SELECT * FROM medical_treatement`;
+    sql = `SELECT  First_aid
+           FROM medical_treatement
+           WHERE Treatement_id = '${tretment}'`;
     db.query(sql, (error, result) => {
       if (error) console.log(error.message);
       resolve(result);
@@ -270,9 +304,11 @@ function getrisevetion() {
   });
 }
 
-function getabout_disease() {
+function getabout_disease(date) {
   return new Promise((resolve, reject) => {
-    sql = `SELECT * FROM about_the_disease`;
+    sql = `SELECT R-number,Treatement_id 
+           FROM about_the_disease
+           WHERE date = "${date}"`;
     db.query(sql, (error, result) => {
       if (error) console.log(error.message);
       resolve(result);
@@ -371,7 +407,7 @@ WHERE Doctor_id = '${id}';`;
     work_doctor:work_doctor,
     removeDoctor:removeDoctor,
     updateDoctor:updateDoctor,
-    getmaindisaese:getmaindisaese
-
+    getmaindisaese:getmaindisaese,
+    gettodaywork:gettodaywork
   };
   

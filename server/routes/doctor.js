@@ -30,6 +30,23 @@ router.post("/add", async (req, res) => {
     }
   });
 
+  router.get("/todaywork/get",async(req,res) => {
+    try{
+      data = [{
+        R_number : "",
+        First_name : "",
+        Age : "",
+        Hostel_or_not : "",
+        Fucalty : "",
+        Disease_symptoms : "",
+        Allergy_medication : "",
+      }]
+     res.render("../views/doctor");
+    }catch{
+    res.send(e.massage);
+    }
+      });
+
 
 
   router.get("/doctor/:today_work",async(req,res) =>{
@@ -42,6 +59,18 @@ router.post("/add", async (req, res) => {
     }
 
   });
+  router.get("/student/",async(req,res) =>{
+    let today_work = req.params.today_work;
+    try {
+      let data = await DoctorController.work_doctor(today_work);
+      res.send(data);
+    } catch (e) {
+      res.send(e.message);
+    }
+
+  });
+  
+  
 
   
 
@@ -61,34 +90,64 @@ router.post("/add", async (req, res) => {
     let Doctor_id = req.params.Doctor_id;
     let details = req.body;
     try {
-      console.log(Doctor_id)
-      console.log(details)
+      //console.log(Doctor_id)
+      //console.log(details)
       let data = await DoctorController.updateDoctor(Doctor_id,details);
       res.send(data);
     } catch (e) {
       res.send(e.message);
     }
+  });
 
-    router.post("/doctor/mainDisease/add",async(req,res) =>{
+
+    router.post("/mainDisease/get",async(req,res) =>{
+      console.log("Get Disease");
       let date1 = req.body.date1;
 
-      date1=date1.slice(1,date1.length);
-      console.log(date1);
+      //date1=date1.slice(1,date1.length);
+      console.log(req.body);
       let date2 = req.body.date2;
-      date2=date2.slice(1,date2.length);
+      //date2=date2.slice(1,date2.length);
       try {
-         DoctorController.getmaindisaese(date1,date2).then(data=>{
-          res.render("../views/index",{pageTitle:'Get main Disease',userData:data})
+        console.log("Function called");
+         DoctorController.getmaindisaese(date1,date2).then(Data=>{
+          console.log(Data);
+          res.render("../views/index1",{pageTitle:'Get main Disease',data:Data,path:"/mainDisease/get"});
          });
-        res.send(data);
       } catch (e) {
         res.send(e.message);
       }
   
     });
-  
 
-  });
+    router.post("/todaywork/get",async(req,res) =>{
+
+      let date1 = req.body.date1;
+
+      //date1=date1.slice(1,date1.length);
+      console.log(req.body);
+    try {
+        //console.log("Function called");
+          DoctorController.gettodaywork(date1).then(Data=>{
+          res.render("../views/doctor",{pageTitle:'Get today work',data:Data,path:"/todaywork/get"});
+         });
+      } catch (e) {
+        res.send(e.message);
+      }
+  
+    }); 
+  
+    router.post("/recreation/add",async(req,res) =>{
+        let details = req.params;
+        try {
+          let data = await DoctorController.addrisevetion(details);
+          res.send(data);
+        } catch (e) {
+          res.send(e.message);
+        }
+    })
+
+ 
 
   module.exports = router;
 

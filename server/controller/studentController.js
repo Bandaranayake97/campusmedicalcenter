@@ -39,12 +39,17 @@ function addStudent(details) {
 
   function addabout_disease(details) {
     return new Promise(async (resolve, reject) => {
-      let {R_number,Disease_id,Symptoms,date,Treatement_id,Doctor } = details;
-  
-  let sql = `INSERT INTO about_the_disease(R_number,Disease_id,Symptoms,date,Treatement_id,Doctor)
-      VALUES('${R_number}','${Disease_id}','${Symptoms}','${date}','${Treatement_id}','${Doctor}')`;
-                
-      db.query(sql, (error, _results) => {
+      let {R_number,date,Treatement_id} = details;
+      console.log("-------------------------------------------------")
+      console.log(date);
+
+      
+  let sql1 = `
+      SELECT Doctor_id
+      from doctor
+      where Work_time = '${date}'`;
+
+  let Doctor = db.query(sql1, (error, _results) => {
         if (error) {
           console.log(error.message);
           resolve(false);
@@ -53,8 +58,26 @@ function addStudent(details) {
   
         reject(new Error("from adddruug"));
       });
+      console.log("--------------------------------doc");
+      console.log(Doctor);
+      console.log("--------------------------------doc");
+       Doctor=1;
+
+
+           
+            let sql2= `INSERT INTO about_the_disease(R_number,date,Treatement_id,Doctor)
+            VALUES('${R_number}','${date}','${Treatement_id}','${Doctor}')`;
+            
+            db.query(sql2, (error, _results) => {
+              if (error) {
+                console.log(error.message);
+                resolve(false);
+              }
+              resolve(true);
+        
+              reject(new Error("from adddruug"));
             });
-  
+          });
     
   }
 
@@ -69,6 +92,8 @@ function addStudent(details) {
       });
     });
   }
+
+
 
   function getoneStudent(id){
     return new Promise((resolve, reject) => {

@@ -29,28 +29,33 @@ const path = require('path');
  
  app.get('/',(req,res)=>{
   data=[{
-    Treatement_id : " ",
-    Disease_symptoms : " ",
-    First_aid : " ",
+    Treatement_id : "",
+    Disease_symptoms : "",
+    First_aid : "",
 
   }];
- res.render(__dirname + '/views/index.ejs',{userData:data});
+ res.render(__dirname + '/views/index',{userData:data});
  
  //res.render(__dirname+'/views/');
  })
  app.get('/login',(req,res)=>{
+
   res.render(__dirname+'/views/loginPage');
  })
+
+
+
+
  app.get('/login/student_register',(req,res)=>{
   res.render(__dirname+'/views/student_register');
  })
  app.get('/loginDoctor',(req,res)=>{
   res.render(__dirname+'/views/loginDoctor');
  })
- app.get('/Astudent',(req,res)=>{
+ app.get('/student',(req,res)=>{
   res.render(__dirname+'/views/student');
  })
- 
+
 
 
  const student = require("./routes/student");

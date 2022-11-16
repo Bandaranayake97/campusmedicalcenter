@@ -7,6 +7,228 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+        :root{
+--mainclr:#239f85;
+--secclr:#ff5d22;
+--third:#DFE4E0;
+--mainafterclr:hsl(167, 81%, 79%);
+}
+*{
+margin: 50pz;
+padding: 10pz;
+outline: none;
+box-sizing: border-box;
+transition: .2s;
+text-transform: capitalize;
+text-decoration: none;
+}
+html{
+font-size: 62.5%;
+
+}
+.header{
+padding: 1rem 7%;
+background-color: var(--mainclr);
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: fixed;
+left: 0;
+right: 0;
+z-index: 1000;
+}
+.header #logo{
+width: 50px;
+}
+.navbar a{
+color: white;
+font-size: 1.5rem;
+margin-left: 2rem;
+position: relative;
+
+}
+.navbar a:after{
+content: '';
+background: var(--secclr);
+width: 0;
+height: 3px;
+position: absolute;
+top: 100%;
+left: 0;
+margin-top: 5px;
+transition: .3s;
+}
+.navbar a:hover:after{
+content: '';
+background: var(--secclr);
+width: 100%;
+height: 3px;
+position: absolute;
+top: 100%;
+left: 0;
+margin-top: 5px;
+}
+.icons div{
+font-size: 2rem;
+margin-right: 1rem;
+color: white;
+display: none;
+}
+.icons a{
+color: white;
+background: var(--secclr);
+padding: 1.5rem 3rem;
+font-size: 1.5rem;
+border-radius: 10px;
+transition: .5s;
+}
+.icons a:hover{
+background: transparent;
+border: 1px solid var(--secclr);
+}
+.navbar.active{
+clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.background-image{
+background: url(images/background.jpg);
+width: 100%;
+height: 100vh;
+background-size: cover;
+background-repeat: no-repeat;
+padding-top: 6%;
+position: relative;
+
+}
+.background-content{
+position: absolute;
+top: 30%;
+left: 50%;
+width: 50%;
+transform: translate(-80%);
+}
+.background-content h1{
+color: black;
+font-size: 40px;
+margin-bottom: 20px;
+}
+.background-content p{
+font-size: 1.5rem;
+margin-bottom: 40px;
+}
+
+.background-content a{
+background: var(--secclr);
+padding: 1.5rem 3rem;
+border-radius: 15px;
+color: white;
+font-size: 1.5rem;
+transition: .5s;
+}
+.background-content a:hover{
+background: transparent;
+border: 1px solid var(--secclr);
+color: black;
+}
+.about{
+padding: 6rem 7%;
+background: var(--third);
+}
+.main-about{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 15px;
+flex-wrap: wrap;
+}
+.inner-about{
+flex: 1 1 45rem;
+}
+
+.inner-about .inner-about-image img{
+width: 100%;
+}
+.about-content{
+width: 80%;
+}
+.about-content h1{
+font-size: 40px;
+margin-bottom: 15px;
+}
+.about-content p{
+font-size: 1.5rem;
+margin-bottom: 30px;
+}
+.about-content a{
+background: var(--secclr);
+padding: 1rem 3rem;
+font-size: 1.5rem;
+color: white;
+transition: .5s;
+}
+.about-content a:hover{
+background: transparent;
+border: 1px solid var(--secclr);
+color: black;
+}*
+{
+margin: 0;
+padding:0;
+box-sizing: border-box;
+}
+
+#container{
+max-width: 430px;
+margin: 30px auto;
+padding: 20px
+}
+
+.form-wrap{
+background: #fff;
+padding:  25px ;
+color: #333;
+border-top: 4px solid #49c1a2;
+border-radius: 05px;
+}
+.form-wrap  h1,
+.form-wrap p{
+text-align: center;
+}
+.form-wrap .form-group{
+margin-top: 15px;
+}
+
+.form-wrap .form-group lable{
+display: block;
+color:#666;
+
+}
+.form-wrap .form-group input{
+width: 100%;
+padding: 10px;
+border:  #ddd 1px solid;
+border-radius: 5px;
+}
+
+.form-wrap button{
+display: block;
+width: 100%;
+padding: 10px;
+margin-top: 20px;
+background-color: #49c1a2;
+color:#fff;
+cursor: pointer;
+border: 10px solid #49c1a2;
+font-family : 'poppins';
+font-size: 15px;
+transition: 1s;
+
+}
+.form-wrap button:hover{
+background: color #37a083;
+transition: 1s; 
+}
+    </style>
   
     <div class="registation">
         <div class="main-about">
@@ -16,57 +238,70 @@
                     <div id="container">
                         <div class="form-wrap">
                             <p>fill the about disease</p>
-                            <form action="http://localhost:4000/api/about_the_disease/add" method="POST">
+                            <form action="http://localhost:4000/api/student/about_the_disease/add" method="POST">
                                 <div class = "form-group">
-                                    <label for="R_number">Register number</label>
+                                    <label for="R_number">R_number</label>
                                     <input type="int" name="R_number" id = "R_number">
                                 </div>                        
                                 <div class = "form-group">
-                                    <label for="frist-name">Frist Name</label>
-                                    <input type="text" name="First_name" id = "First_name">
+                                    <label for="date">date</label>
+                                    <input type="date" name="date" id = "date">
                                 </div>
                                 <div class = "form-group">
-                                    <label for="Last-name">Last Name</label>
-                                    <input type="text" name="Last_name" id = "Last_name">
+                                    <label for="Treatement_id">Treatement_id</label>
+                                    <input type="text" name="Treatement_id" id = "Treatement_id">
                                 </div>
-                                <div class = "form-group">
-                                    <label for="Age">Age</label>
-                                    <input type="text" name="Age" id = "Age">
-                                </div>
-                                <div class = "form-group">
-                                    <label for="Addres">Addres</label>
-                                    <input type="text" name="Addres" id = "Addres">
-                                </div>
-                                <div class = "form-group">
-                                    <label for="email">email</label>
-                                    <input type="text" name="email" id = "email">
-                                </div>
-                                <div class = "form-group">
-                                    <label for="Hostel_or_not">Hostel_or_not</label>
-                                    <input type="text" name="Hostel_or_not" id = "Hostel_or_not">
-                                </div>
-                                <div class = "form-group">
-                                    <label for="Fucalty">Fucalty</label>
-                                    <input type="text" name="Fucalty" id = "Fucalty">
-                                </div>
-                                <button type = "Submit" >sign up</button>
+                                <button type = "Submit" >Submit</button>
                             </form>
-                            <footer> 
-                                <p>Already Have an Account?<a href="#">Loging Here</a></p>
-                            </footer>
         
                     </div>
                     </body>              
                 </div>
                 
             </div>
-            <div class="inner-about">
-                <div class="inner-about-image">
-                    <img src="images/chiness.jpg" alt="">
-                </div>
-            </div>
         </div>
     </div>
+    <style>
+        table {
+
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+          font-size: 20px;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 40px;
+
+        }
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+
+    <table>
+
+        <thead>
+            <th>Rrow number
+            </th>
+            <th>Treatment id number</th>
+            <th>Disease symptoms</th>
+            <th>Firs aid</th>
+
+        </thead>
+<tbody>
+
+  
+
+    
+
+</tbody>
+</table>
+</div>
+
+
     
 </body>
 </html>

@@ -1,4 +1,5 @@
 const express = require("express");
+const DoctorController = require("../controller/DoctorController");
 
 const studentController = require("../controller/studentController");
 const router = express.Router();
@@ -16,6 +17,8 @@ router.post("/add", async (req, res) => {
       console.log(e.message);
     }
   });
+
+  
   module.exports = router;
  
   //
@@ -28,6 +31,32 @@ router.post("/add", async (req, res) => {
     } catch (e) {
       res.send(e.message);
     }
+  });
+
+
+  router.get("/about_the_disease/get",async(req,res) => {
+try{
+ res.render("../views/student");
+}catch{
+res.send(e.massage);
+}
+  });
+
+
+  router.post("/about_the_disease/add", async (req, res) => {
+    let details = req.body;
+    let tretment = req.body.Treatement_id;
+
+    try {
+      //console.log("Function Called");
+      let data = await studentController.addabout_disease(details);
+      let data1 = await DoctorController.gettreatement(tretment);
+      if (data&data1) return res.status(200).redirect("../about_the_disease/get");
+      
+    }catch (e) {
+      console.log(e.message);
+    }
+
   });
 
   router.get("/getupdateStudent/:R_number",async(req,res)=>{
