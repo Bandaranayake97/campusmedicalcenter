@@ -261,47 +261,92 @@ transition: 1s;
             </div>
         </div>
     </div>
-    <style>
-        table {
 
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-          font-size: 20px;
-        }
+</div>
 
-        td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 40px;
+<div class="registation">
+    <div class="main-about">
+        <div class="inner-about">
+            <div class="about-content">
+             <body>
+                <div id="container">
+                    <div class="form-wrap">
+                        <p>First aid</p>
+                        <form action="http://localhost:4000/api/medical_treatement/get" method="post">                       
+                            <div class = "form-group">
+                                <label for="Treatement_id">Treatement_id</label>
+                                <input type="text" name="Treatement_id" id = "Treatement_id">
+                            </div>
+                            <button type = "Submit" >Submit</button>
+                        </form>
+    
+                </div>
+                </body>              
+            </div>
+            
+        </div>
+    </div>
+</div>
 
-        }
-        tr:nth-child(even) {
-          background-color: #dddddd;
-        }
-        </style>
+</div>
 
-    <table>
+<style>
+    table {
 
-        <thead>
-            <th>Rrow number
-            </th>
-            <th>Treatment id number</th>
-            <th>Disease symptoms</th>
-            <th>Firs aid</th>
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
 
-        </thead>
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+
+
+
+        <table>
+
+            <thead>
+                <th>Rrow number
+                </th>
+                <th>Treatment id number</th>
+                <th>Disease symptoms</th>
+                <th>Firs aid</th>
+
+            </thead>
 <tbody>
 
-  
+      
+    <%
+    if(data.length!=0){
+        var i=1;
+        data.forEach(function(data){
+        %>
+        <tr>
+            <td><%=i; %></td>
+            <td><%=data.Treatement_id %></td>
+            <td><%=data.Disease_symptoms %></td>
+            <td><%=data.First_aid%></td>
+        </tr>
+        <%  i++; }) %>
+        <% } 
+        else{ %>
+            <tr>
+                <td colspan="4">No Data Found</td>
+            </tr>
+        <% } %>
+        
 
-    
-
-</tbody>
+    </tbody>
 </table>
 </div>
 
-
-    
 </body>
 </html>

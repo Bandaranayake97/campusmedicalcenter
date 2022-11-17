@@ -256,7 +256,7 @@ function gethistory() {
 function gettreatement(tretment) {
   console.log(tretment);
   return new Promise((resolve, reject) => {
-    sql = `SELECT  First_aid
+    sql = `SELECT  Treatement_id,Disease_symptoms,First_aid
            FROM medical_treatement
            WHERE Treatement_id = '${tretment}'`;
     db.query(sql, (error, result) => {

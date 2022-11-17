@@ -4,24 +4,27 @@ const router = express.Router();
 
 
 
-router.post("/add", async (req, res) => {
+/*router.post("/get", async (req, res) => {
     let details = req.body;
 
     try {
-      let data = await DoctorController.addtreatement(details);
-      if (data) return res.status(200).json({ msg: "Student added" });
+       DoctorController.gettreatement(details).then(Data=>{res.render("../views/student",
+       {pageTitle:'Get first aid',data:Data,path:"/get"})});
       res.status(400).json({ error: "FATAL ERROR: complaint not added" });
     } catch (e) {
       console.log(e.message);
     }
-  });
+  });*/
   
   //
-  router.get("/get", async (req, res) => {
+  router.post("/get", async (req, res) => {
+    let  data = req.body.Treatement_id;
+    console.log(req.body);
+    //data=data.slice(1,data.length);
     try {
-      let data = await DoctorController.gettreatement();
+      DoctorController.gettreatement(data).then(Data=>{res.render("../views/student",
+      {pageTitle:'Get first aid',data:Data,path:"/get"})});
       console.log(data.length)
-      res.send(data);
     } catch (e) {
       res.send(e.message);
     }

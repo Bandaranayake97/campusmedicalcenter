@@ -141,7 +141,7 @@ router.post("/add", async (req, res) => {
         let details = req.params;
         try {
           let data = await DoctorController.addrisevetion(details);
-          res.send(data);
+          res.render("../views/doctor");
         } catch (e) {
           res.send(e.message);
         }

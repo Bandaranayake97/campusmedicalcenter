@@ -36,6 +36,11 @@ router.post("/add", async (req, res) => {
 
   router.get("/about_the_disease/get",async(req,res) => {
 try{
+  data = [{
+    Treatement_id : "",
+    Disease_symptoms : "",
+    First_aid : "",
+  }]
  res.render("../views/student");
 }catch{
 res.send(e.massage);
@@ -51,7 +56,7 @@ res.send(e.massage);
       //console.log("Function Called");
       let data = await studentController.addabout_disease(details);
       let data1 = await DoctorController.gettreatement(tretment);
-      if (data&data1) return res.status(200).redirect("../about_the_disease/get");
+      if (data&data1) return res.status(200).redirect("/api/student/about_the_disease/get");
       
     }catch (e) {
       console.log(e.message);

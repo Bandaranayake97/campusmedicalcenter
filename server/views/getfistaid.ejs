@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        table {
+
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+
+        }
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+
+
+
+            <table>
+
+                <thead>
+                    <th>Rrow number
+                    </th>
+                    <th>Treatment id number</th>
+                    <th>Disease symptoms</th>
+                    <th>Firs aid</th>
+
+                </thead>
+    <tbody>
+
+          
+        <%
+        if(data.length!=0){
+            var i=1;
+            data.forEach(function(data){
+            %>
+            <tr>
+                <td><%=i; %></td>
+                <td><%=data.Treatement_id %></td>
+                <td><%=data.Disease_symptoms %></td>
+                <td><%=data.First_aid%></td>
+            </tr>
+            <%  i++; }) %>
+            <% } 
+            else{ %>
+                <tr>
+                    <td colspan="4">No Data Found</td>
+                </tr>
+            <% } %>
+            
+
+        </tbody>
+    </table>
+</div>
+    
+</body>
+</html>
